@@ -1,0 +1,23 @@
+{
+    "Decisions": {
+        "DEC1": 
+        {
+            "text1": "Blah",
+            "text2": "BLAh blah",
+            "text3": "Blah blah blah",
+            "pointer1": "DEC2",
+            "pointer2": "DEC3",
+            "pointer3": "DEC4"
+        },
+        
+        "DEC2": 
+        {
+            "text1": "Blah2",
+            "text2": "BLAh blah2",
+            "text3": "Blah blah blah2",
+            "pointer1": "DEC5",
+            "pointer2": "DEC6",
+            "pointer3": "DEC7"
+        }
+    }
+}
