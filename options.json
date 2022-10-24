@@ -1,0 +1,134 @@
+{
+	"Scenario": {
+		"Scenario1":
+		{
+			"Dialogue": "It is an average Monday like any other, except you’ve decided to go camping by yourself for the week. After a long, grueling day of camping activities, you go back to your cabin and decide to treat yourself with your favorite food: lasagna. As you start cooking, you decide to rest on the couch for a few minutes, leaving your phone in the kitchen next to the oven. However, your utter lack of energy catches up to you, and you fall asleep. You then wake up to a strong smell of smoke in the air. What do you do next?",
+			"Dec1": "Get up from the couch and investigate",
+			"Dec2": "Go back to sleep",
+            "Dec3" : "",
+			"pointer1" : "Scenario2",
+			"pointer2" : "Scenario3",
+            "pointer3" : ""
+		},
+		"Scenario2":
+		{
+			"Dialogue" : "You spring up from the couch and hurry to the source of the smell. You come across a gigantic fire from cooking your lasagna for too long. What do you do?",
+			"Dec1" : "Search for an exit",
+			"Dec2" : "Stop the fire",
+			"Dec3" : "Hide",
+			"pointer1" : "Scenario4",
+			"pointer2" : "Scenario5",
+			"pointer3" : "Scenario6"
+		},
+		"Scenario3":
+		{
+			"Dialogue": "You tell yourself, “Everything’s fine. It’s probably from outside” and fall back asleep. Your cabin eventually collapses from a fire with you still inside. (Dead) *Take any sign of a possible dangerous situation seriously. Do not ignore it.",
+			"Dec1" : "Go back to previous scenario?",
+			"Dec2" : "Go back to start screen?",
+            "Dec3" : "",
+			"pointer1" : "Scenario1",
+            "pointer2" : "",
+            "pointer3" : ""
+		},
+		"Scenario4":
+		{
+			"Dialogue" : "After noticing the fire, you run away to the nearest exit. You come across two doors that both lead to an exit. One door has smoking coming from the other side through the bottom, and the other one does not have any smoke near it. Which door do you approach?",
+			"Dec1" : "Door with no smoke",
+			"Dec2" : "Door with smoke",
+            "Dec3" : "",
+			"pointer1" : "Scenario7",
+			"pointer2" : "Scenario8",
+            "pointer3" : ""
+		},
+		"Scenario5":
+		{
+			"Dialogue": "You do everything you possibly can to put out the flames, but there are simply too many to handle. You cannot keep up with the fire, and the house eventually collapses with you still inside. (Dead)*In a fire, do not stay in the building. It is important to get yourself as far away from the fire as possible. Do not attempt to put out large fires. It is more important that you keep yourself safe.",
+			"Dec1" : "Go back to previous Scenario?",
+            "Dec2" : "",
+            "Dec3" : "",
+			"pointer1" : "Scenario2",
+            "pointer2" : "",
+            "pointer3" : ""
+		},
+		"Scenario6":
+		{
+			"Dialogue": "In a moment of sheer panic, you run away from the fire to a room not currently burning down. You then hide, hoping that the fire will go away or someone will notice the fire and help. The flames eventually catch up to the room, and you die in the fire. (Dead)*In a fire, do not stay in the building. It is important to get yourself as far away from the fire as possible.",
+			"Dec1": "Go back to previous Scenario?",
+            "Dec2" : "",
+            "Dec3" : "",
+			"pointer1" : "Scenario2",
+            "pointer2" : "",
+            "pointer3" : ""
+		},
+		"Scenario7":
+		{
+			"Dialogue" : "You approach the door with no smoke near it. You open the door, but are still confronted with smoke on the other side filling the hallway. How do you get through?",
+			"Dec1" : "Crawl",
+			"Dec2" : "Run",
+            "Dec3" : "",
+			"pointer1" : "Scenario9",
+			"pointer2" : "Scenario10",
+            "pointer3" : ""
+		},
+		"Scenario8":
+		{
+			"Dialogue" : "You approach the smoking door. What do you do next?",
+			"Dec1" : " Check the doorknob",
+			"Dec2" : "Open the door",
+            "Dec3" : "",
+			"pointer1" : "Scenario12",
+			"pointer2" : "Scenario13",
+            "pointer3" : ""
+		},
+		"Scenario9" :
+		{
+			"Dialogue" : "You get low to the ground and crawl through the hallway, making sure that you do not inhale any smoke.",
+			"Dec1" : "Continue",
+            "Dec2" : "",
+            "Dec3" : "",
+			"pointer1" : "Scenario11",
+            "pointer2" : "",
+            "pointer3" : ""
+		},
+		"Scenario10":
+		{
+			"Dialogue" : "In an attempt to escape as quickly as possible, you run through the hallway, breathing in smoke in the process. *In this scenario, it is better to crawl to prevent you from breathing in smoke and potentially damaging your lungs.",
+			"Dec1" : "Continue",
+            "Dec2" : "",
+            "Dec3" : "",
+			"pointer1" : "Scenario11",
+            "pointer2" : "",
+            "pointer3" : ""
+		},
+		"Scenario11":
+		{
+			"Dialogue" : "At the end of the hallway, you approach a window that you can use to escape. You open the window and crawl through, escaping the cabin and the fire inside.",
+            "Dec1" : "",
+            "Dec2" : "",
+            "Dec3" : "",
+            "pointer1" : "",
+            "pointer2" : "",
+            "pointer3" : ""
+		},
+		"Scenario12":
+		{
+			"Dialogue": "You gently bring your hand towards the doorknob and feel that the doorknob is extremely hot. You realize that you cannot open the door without burning your hand, so you do not open it.",
+			"Dec1" : "Go to door with no smoke",
+            "Dec2" : "",
+            "Dec3" : "",
+			"pointer1" : "Scenario7",
+            "pointer2" : "",
+            "pointer3" : ""
+		},
+		"Scenario13" :
+		{
+			"Dialogue" : "You quickly and firmly grab the doorknob without realizing that it is extremely hot. You burn your hand and cannot manage to open the door. You then go to the other door.",
+			"Dec1" : "Go to door with no smoke",
+            "Dec2" : "",
+            "Dec3" : "",
+			"pointer1" : "Scenario7",
+            "pointer2" : "",
+            "pointer3" : ""
+		}
+	}
+}
