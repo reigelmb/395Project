@@ -12,21 +12,22 @@ with open('chapter1.json', 'r', encoding='utf-8') as f:
 
 
 class Window(Frame):
-    #Declare
+    #Initialize Window class be where most of the game is created
 
     def __init__(self, file, window=None):
         Frame.__init__(self, window)
         self.window = window
+        self.window['bg'] = "black"
         self.window.attributes('-fullscreen', True)
         self.file = file
         self.frame = Frame(self.window, bg="black")
         self.frame.grid(row=0, column=0, padx=10, pady=10)
-        self.title = Label(self.frame, text="Typical Monday", justify=CENTER, font=("Roman", 20), fg="orange", bg="black", width=100, wraplength=700)
-        self.title.grid(row=1, column=1, columnspan=6)
-        self.DIE = Button(self.frame, text="Die", width=10, command=self.clickDieButton)
-        self.DIE.grid(row=2, column=3)
-        self.START = Button(self.frame, text="Start", width=10, command=self.clickStartButton)
-        self.START.grid(row=2, column=2)
+        self.title = Label(self.frame, text="Typical Monday", justify=CENTER, font=("Roman", 20), fg="orange", bg="black", width=85, wraplength=500)
+        self.title.grid(row=0, column=0, columnspan=2, pady=100)
+        self.START = Button(self.frame, text="Start", command=self.clickStartButton, justify=CENTER)
+        self.START.grid(row=2, column=0, rowspan=2, pady=100, ipadx=50)
+        self.DIE = Button(self.frame, text="Quit", command=self.clickDieButton, justify=CENTER)
+        self.DIE.grid(row=2, column=1, rowspan=2, pady=100, ipadx=50)
 
     def clickStartButton(self):
         '''self.dialog.destroy()
@@ -55,7 +56,7 @@ class Window(Frame):
             self.option3 = Button(self.window, text=self.file["Scenario"]["Scenario1"]["Dec3"], command=lambda: self.buttons(self.file['Scenario']['Scenario1']['pointer3']), justify=CENTER)
             self.option3.grid(row=3, column=2, sticky="s", rowspan=2, pady=100)
         self.menu = Menu(self.window, tearoff=0, bg="white", fg="orange")
-        self.menu.add_command(label="Die", command=self.clickDieButton)
+        self.menu.add_command(label="Quit", command=self.clickDieButton)
         self.menu.add_command(label="Inventory")
         self.menu.add_command(label="Help")
         self.window.config(menu=self.menu)
