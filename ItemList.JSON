@@ -1,167 +1,144 @@
 {
-	"Items":{
-		"Item1":
-		{
-			"Name" : "PocketKnife",
-			"IdNum" : 0,
-            "Type" : "Tool"
-		},
-		"Item2":
-		{
-			"Name" : "First Aid Kit",
-			"IdNum" : 1,
-            "Type" : "Tool"
-		},
-		"Item3":
-		{
-			"Name" : "Axe",
-			"IdNum" : 2,
-            "Type" : "Tool"
-		},
-		"Item4":
-		{
-			"Name" : "Flashlight",
-			"IdNum" : 3,
-            "Type" : "Tool"
-		},
-		"Item5": 
-		{
-			"Name" : "Rifle",
-			"IdNum" : 4,
-            "Type" : "Tool"
-		},
-		"Item6":
-		{
-			"Name" : "Camo Clothes",
-			"IdNum" : 5,
-            "Type": "Clothes"
-		},
-		"Item7":
-		{
-			"Name" : "Knife",
-			"IdNum" : 6,
-            "Type" : "Tool"
-		},
-		"Item8":
-		{
-			"Name" : "Matches",
-			"IdNum" : 7,
-            "Type" : "Tool"
-		},
-		"Item9":
-		{
-			"Name" : "Water Bottle (Empty)",
-			"IdNum" : 8
-            "Type" : "Tool"
-		},
-        "Item10":
-        {
-            "Name" : "Water Bottle (Dirty)",
-            "IdNum" : 9,
-            "Type" : "Tool"
-        },
-        "Item11":
-        {
-            "Name" : "Water Bottle (Clean)",
-            "IdNum" : 10,
-            "Type" : "Tool"
-        },
-        "Item12":
-        {
-            "Name" : "Rope",
-            "IdNum" : 11,
-            "Type" : "Tool"
-        },
-        "Item13":
-        {
-            "Name" : "Marshmallow",
-            "IdNum" : 12,
-            "Type" : "Food"
-        },
-        "Item14":
-        {
-            "Name" : "Marshmallow (Cooked)",
-            "IdNum" : 13,
-            "Type" : "Food"
-        },
-        "Item15":
-        {
-            "Name" : "Tarp",
-            "IdNum" : 14,
-            "Type" : "Tool"
-        },
-        "Item16":
-        {
-            "Name" : "American BitterSweet",
-            "IdNum" : 15,
-            "Type" : "Food"
-        },
-        "Item17":
-        {
-            "Name" : "Blueberries",
-            "IdNum" : 16,
-            "Type" : "Food"
-        },
-        "Item18":
-        {
-            "Name" : "Blackberries",
-            "IdNum" : 17,
-            "Type" : "Food"
-        },
-        "Item19":
-        {
-            "Name" : "Strawberries",
-            "IdNum" : 18,
-            "Type" : "Food"
-        },
-        "Item20":
-        {
-            "Name" : "Cottoneaster",
-            "IdNum" : 19,
-            "Type" : "Food"
-        },
-        "Item21":
-        {
-            "Name" : "Yew",
-            "IdNum" : 20,
-            "Type" : "Food"
-        },
-        "Item21":
-        {
-            "Name" : "Cooking Pot (Empty)",
-            "IdNum" : 21,
-            "Type" : "Tool"
-        },
-        "Item22":
-        {
-            "Name" : "Cooking Pot (Dirty)",
-            "IdNum" : 22,
-            "Type" : "Tool"
-        },
-        "Item23":
-        {
-            "Name" : "Cooking Pot (Clean)",
-            "IdNum" : 23,
-            "Type" : "Tool"
-        },
-        "Item24":
-        {
-            "Name" : "Bucket (Empty)",
-            "IdNum" : 24,
-            "Type" : "Tool"
-        },
-        "Item25":
-        {
-            "Name" : "Bucket (Dirty)",
-            "IdNum" : 25,
-            "Type" : "Tool"
-        },
-        "Item26":
-        {
-            "Name" : "Bucket (Clean)",
-            "IdNum" : 26,
-            "Type" : "Tool"
-        }
-
-	}
+  "Items": {
+    "0": {
+      "Name": "PocketKnife",
+      "Type": "Tool",
+      "Description": "This is a PocketKnife you have from home. You can use it to cut things."
+    },
+    "1": {
+      "Name": "First Aid Kit",
+      "Type": "Tool",
+      "Description": "This is a First Aid Kit. You can use it to to heal yourself and fix some status effects"
+    },
+    "2": {
+      "Name": "Axe",
+      "Type": "Tool",
+      "Description" : "This is an axe. You can use it to cut wood, or perhaps for something else..."
+    },
+    "3": {
+      "Name": "Flashlight",
+      "Type": "Tool",
+      "Description" : "This is a flashlight. You can use it to light the way, or perhaps for something else..."
+    },
+    "4": {
+      "Name": "Rifle",
+      "Type": "Tool",
+      "Description" : "This is a rifle. Pow Pow."
+    },
+    "5": {
+      "Name": "Camo Clothes",
+      "Type": "Clothes",
+      "Description" : "These are Camo Clothes. They may be useful for hiding in the wilderness"
+    },
+    "6": {
+      "Name": "Knife",
+      "Type": "Tool",
+      "Description" : "This is a knife. Larger than your pocketknife, it might be useful to cut larger things or defend yourself."
+    },
+    "7": {
+      "Name": "Matches",
+      "Type": "Tool",
+      "Description" : "These are matches. You can use these to light a fire."
+    },
+    "8": {
+      "Name": "Water Bottle (Empty)",
+      "Type": "Tool",
+      "Description" : "This is an empty water bottle. Maybe you should fill it up."
+    },
+    "9": {
+      "Name": "Water Bottle (Dirty)",
+      "Type": "Tool",
+      "Description" : "This water bottle is filled with dirty water. You should clean it somehow before you drink it."
+    },
+    "10": {
+      "Name": "Water Bottle (Clean)",
+      "Type": "Tool",
+      "Description" : "This water bottle is filled with clean water. You could drink this and be fine."
+    },
+    "11": {
+      "Name": "Rope",
+      "Type": "Tool",
+      "Description" : "This is rope. It might be useful when trying to survive"
+    },
+    "12": {
+      "Name": "Marshmallow",
+      "Type": "Food",
+      "Description" : "This is a marshmallow. These taste delicious, but would be even better cooked."
+    },
+    "13": {
+      "Name": "Marshmallow (Cooked)",
+      "Type": "Food",
+      "Description" : "This is a cooked marshmallow. Delicious!"
+    },
+    "14": {
+      "Name": "Tarp",
+      "Type": "Tool",
+      "Description" : "This is a tarp. It could be useful for staying safe from the elements"
+    },
+    "15": {
+      "Name": "American BitterSweet",
+      "Type": "Food",
+      "Description" : "This is a berry. They are orange."
+    },
+    "16": {
+      "Name": "Blueberries",
+      "Type": "Food",
+      "Description" : "These berries are small circular and of course, blue."
+    },
+    "17": {
+      "Name": "Blackberries",
+      "Type": "Food",
+      "Description" : "These berries are small and black. They look safe to eat."
+    },
+    "18": {
+      "Name": "Strawberries",
+      "Type": "Food",
+      "Description" : "These are strawberries. You know what a strawberry is don't you?"
+    },
+    "19": {
+      "Name": "Cottoneaster",
+      "Type": "Food",
+      "Description" : "These berries are small and red."
+    },
+    "20": {
+      "Name": "Yew",
+      "Type": "Food",
+      "Description" : "These berries are small and red. Also, badgers can eat them."
+    },
+    "21": {
+      "Name": "Cooking Pot (Empty)",
+      "Type": "Tool",
+      "Description" : "This is an empty cooking pot. This could be useful."
+    },
+    "22": {
+      "Name": "Cooking Pot (Dirty)",
+      "Type": "Tool",
+      "Description" : "This cooking pot is filled with dirty water. You probably shouldn't consume this just yet."
+    },
+    "23": {
+      "Name": "Cooking Pot (Clean)",
+      "Type": "Tool",
+      "Description" : "This cooking pot is filled with clean water. This is safe to drink."
+    },
+    "24": {
+      "Name": "Bucket (Empty)",
+      "Type": "Tool",
+      "Description" : "This bucket is empty. It could be useful for carrying something..."
+    },
+    "25": {
+      "Name": "Bucket (Dirty)",
+      "Type": "Tool",
+      "Description" : "This bucket is filled with dirty water. You should avoid drinking it for now."
+    },
+    "26": {
+      "Name": "Bucket (Clean)",
+      "Type": "Tool",
+      "Description" : "This bucket is filled with clean water. This is now safe to drink!"
+    },
+    "27": {
+      "Name" : "Burnt Lasagna",
+      "Type": "Disappointment",
+      "Description" : "This is a constant reminder of how you burnt down your house. You can never drop this item."
+    }
+  }
 }
