@@ -10,6 +10,7 @@
 			"pointer2" : "Scenario3",
             "pointer3" : "",
 			"hasVisited" : false,
+			"takeDamage" : "0",
 			"inspect":
 			{
 				"Description" : "It's not the time to look around. Go investigate the smoke",
@@ -31,6 +32,7 @@
 			"pointer2" : "Scenario5",
 			"pointer3" : "Scenario6",
 			"hasVisited" : false,
+			"takeDamage" : "0",
 			"inspect": {
 				"Description" : "YOUR HOUSE IS ON FIRE! STOP INSPECTING!",
 				"Dec1" : "",
@@ -51,6 +53,7 @@
             "pointer2" : "Scenario1",
             "pointer3" : "",
 			"hasVisited" : false,
+			"takeDamage" : "0",
 			"inspect": {
 				"Description" : "No.",
 				"Dec1" : "",
@@ -71,6 +74,7 @@
 			"pointer2" : "Scenario8",
             "pointer3" : "",
 			"hasVisited" : false,
+			"takeDamage" : "0",
 			"inspect": {
 				"Description" : "Your house is burning. It's time to leave, not inspect.",
 				"Dec1" : "",
@@ -91,6 +95,7 @@
             "pointer2" : "Scenario2",
             "pointer3" : "",
 			"hasVisited" : false,
+			"takeDamage" : "0",
 			"inspect": {
 				"Description" : "Not the time to inspect.",
 				"Dec1" : "",
@@ -111,6 +116,7 @@
             "pointer2" : "Scenario2",
             "pointer3" : "",
 			"hasVisited" : false,
+			"takeDamage" : "0",
 			"inspect": {
 				"Description" : "Stop trying to inspect. This feature is for the chapters after this.",
 				"Dec1" : "",
@@ -131,6 +137,7 @@
 			"pointer2" : "Scenario10",
             "pointer3" : "",
 			"hasVisited" : false,
+			"takeDamage" : "0",
 			"inspect": {
 				"Description" : "You have a decision to make don't you? It's not the time to look around.",
 				"Dec1" : "",
@@ -151,6 +158,7 @@
 			"pointer2" : "Scenario13",
             "pointer3" : "",
 			"hasVisited" : false,
+			"takeDamage" : "0",
 			"inspect": {
 				"Description" : "There is nothing to see here. Go mess with the door.",
 				"Dec1" : "",
@@ -171,6 +179,7 @@
             "pointer2" : "",
             "pointer3" : "",
 			"hasVisited" : false,
+			"takeDamage" : "0",
 			"inspect": {
 				"Description" : "You are crawling through a house fire. What is there to look at?",
 				"Dec1" : "",
@@ -191,6 +200,7 @@
             "pointer2" : "",
             "pointer3" : "",
 			"hasVisited" : false,
+			"takeDamage" : "0",
 			"inspect": {
 				"Description" : "You need to escape! Stop looking around!",
 				"Dec1" : "",
@@ -211,6 +221,7 @@
             "pointer2" : "",
             "pointer3" : "",
 			"hasVisited" : false,
+			"takeDamage" : "0",
 			"inspect": {
 				"Description" : "",
 				"Dec1" : "",
@@ -231,6 +242,7 @@
             "pointer2" : "",
             "pointer3" : "",
 			"hasVisited" : false,
+			"takeDamage" : "0",
 			"inspect": {
 				"Description" : "Aren't you trying to escape? Stop looking around!",
 				"Dec1" : "",
@@ -251,6 +263,7 @@
             "pointer2" : "",
             "pointer3" : "",
 			"hasVisited" : false,
+			"takeDamage" : "0",
 			"inspect": {
 				"Description" : "Seriously? You are burning your hand on a doorknob right now and you decide to look around?",
 				"Dec1" : "",
@@ -265,14 +278,15 @@
 	"1" : {
 		"Scenario1":
 		{
-			"Dialogue" : "INSERT DIALOGUE HERE ONCE MADE",
+			"Dialogue" : "You managed to escape from the cabin, but the smell of smoke in the air is still strong. The fire continues to consume the rest of the cabin and will quickly spread to the rest of the campsite. You need to leave the site, but there is still time to gather some items that could be of use to you later. You quickly run to the front of the cabin to pick up your backpack and plan where to go next…",
 			"Dec1" : "Shed",
 			"Dec2" : "Deer Hunting Stand",
-			"Dec3" : "Firepit",
+			"Dec3" : "Fire pit",
 			"pointer1" : "Scenario2",
 			"pointer2" : "Scenario3",
 			"pointer3" : "Scenario4",
 			"hasVisited" : false,
+			"takeDamage" : "0",
 			"inspect": {
 				"Description" : "",
 				"Dec1" : "",
@@ -285,7 +299,7 @@
 		},
 		"Scenario2":
 		{
-			"Dialogue" : "INSERT DIALOGUE HERE ONCE MADE",
+			"Dialogue" : "In the shed, you find a first aid kit, an axe, a flashlight, and a bucket.",
 			"Dec1" : "Where next?",
 			"Dec2" : "",
 			"Dec3" : "",
@@ -293,6 +307,7 @@
 			"pointer2" : "",
 			"pointer3" : "",
 			"hasVisited" : false,
+			"takeDamage" : "0",
 			"inspect": {
 				"Description" : "",
 				"Dec1" : "",
@@ -305,7 +320,7 @@
 		},
 		"Scenario3":
 		{
-			"Dialogue" : "INSERT DIALOGUE HERE ONCE MADE",
+			"Dialogue" : "In the deer hunting stand, you find an empty rifle, camo clothing, a knife, and a cooking pot. You notice a box of ammunition nearby, but there is only 1 bullet left, so you load the rifle with the last remaining bullet.",
 			"Dec1" : "Where Next?",
 			"Dec2" : "",
 			"Dec3" : "",
@@ -313,6 +328,7 @@
 			"pointer2" : "",
 			"pointer3" : "",
 			"hasVisited" : false,
+			"takeDamage" : "0",
 			"inspect": {
 				"Description" : "",
 				"Dec1" : "",
@@ -325,7 +341,7 @@
 		},
 		"Scenario4":
 		{
-			"Dialogue" : "INSERT DIALOGUE HERE ONCE MADE",
+			"Dialogue" : "In the fire pit, there is no fire yet, but you manage to find a box of matches, an empty water bottle with no cap, some rope, and a half-eaten bag of marshmallows.",
 			"Dec1" : "Where Next?",
 			"Dec2" : "",
 			"Dec3" : "",
@@ -333,6 +349,7 @@
 			"pointer2" : "",
 			"pointer3" : "",
 			"hasVisited" : false,
+			"takeDamage" : "0",
 			"inspect": {
 				"Description" : "",
 				"Dec1" : "",
@@ -345,14 +362,15 @@
 		},
 		"Scenario5":
 		{
-			"Dialogue" : "INSERT DIALOGUE HERE ONCE MADE",
-			"Dec1" : "Go South from the house",
+			"Dialogue" : "The fire is spreading quickly, so you take the items you found and leave the area as quickly as possible. You must choose a direction to head towards",
+			"Dec1" : "Go East from the house",
 			"Dec2" : "Go to the West of the house",
-			"Dec3" : "Go to the East of the ",
+			"Dec3" : "Go to the South of the house",
 			"pointer1" : "Scenario6",
 			"pointer2" : "Scenario7",
 			"pointer3" : "Scenario8",
 			"hasVisited" : false,
+			"takeDamage" : "0",
 			"inspect": {
 				"Description" : "",
 				"Dec1" : "",
@@ -365,14 +383,15 @@
 		},
 		"Scenario6":
 		{
-			"Dialogue" : "INSERT DIALOGUE HERE ONCE MADE: BERRY BUSH SCENARIO",
-			"Dec1" : "",
-			"Dec2" : "",
-			"Dec3" : "",
-			"pointer1" : "",
-			"pointer2" : "",
-			"pointer3" : "",
+			"Dialogue" : "You head East and come across a forest. You notice 3 paths that will take you through the forest. The first path is cluttered with plants with leaves that are in groups of 3 with pointed tips and jagged edges. The second path contains very long and narrow green leaves and a few flowers of different colors. The third path contains plants with leaves that are in groups of 3 with vine-like stems. Which path will you take?",
+			"Dec1" : "First path",
+			"Dec2" : "Second path",
+			"Dec3" : "Third path",
+			"pointer1" : "Scenario9",
+			"pointer2" : "Scenario10",
+			"pointer3" : "Scenario11",
 			"hasVisited" : false,
+			"takeDamage" : "0",
 			"inspect": {
 				"Description" : "",
 				"Dec1" : "",
@@ -385,14 +404,15 @@
 		},
 		"Scenario7":
 		{
-			"Dialogue" : "INSERT DIALOGUE HERE ONCE MADE: RIVER SCENARIO",
-			"Dec1" : "",
-			"Dec2" : "",
-			"Dec3" : "",
-			"pointer1" : "",
-			"pointer2" : "",
-			"pointer3" : "",
+			"Dialogue" : "You head West and reach a river that heads North. The river is a good source of freshwater, but it is not a good area to make a shelter. What will you do?",
+			"Dec1" : "Gather water",
+			"Dec2" : "Fish",
+			"Dec3" : "Follow the river North",
+			"pointer1" : "Scenario13",
+			"pointer2" : "Scenario14",
+			"pointer3" : "Scenario15",
 			"hasVisited" : false,
+			"takeDamage" : "0",
 			"inspect": {
 				"Description" : "",
 				"Dec1" : "",
@@ -405,14 +425,15 @@
 		},
 		"Scenario8":
 		{
-			"Dialogue" : "INSERT DIALOGUE HERE ONCE MADE: FOREST BEFORE CLEARING",
-			"Dec1" : "",
-			"Dec2" : "",
-			"Dec3" : "",
+			"Dialogue" : "You head South and notice a very large collection of bushes. There could be berries here, and that could be a decent source of food. However, there is a large black bear in the distance. It is in between you and the berries, so you will have to deal with it somehow…",
+			"Dec1" : "Sneak around",
+			"Dec2" : "Confront the bear",
+			"Dec3" : "Turn around and flee",
 			"pointer1" : "",
 			"pointer2" : "",
 			"pointer3" : "",
 			"hasVisited" : false,
+			"takeDamage" : "0",
 			"inspect": {
 				"Description" : "",
 				"Dec1" : "",
@@ -425,14 +446,15 @@
 		},
 		"Scenario9":
 		{
-			"Dialogue" : "INSERT DIALOGUE HERE ONCE MADE",
-			"Dec1" : "",
+			"Dialogue" : "You walk through the path, pushing aside all plants in your way. As you make your way through, you feel your skin start to irritate.",
+			"Dec1" : "Continue",
 			"Dec2" : "",
 			"Dec3" : "",
-			"pointer1" : "",
+			"pointer1" : "Scenario12",
 			"pointer2" : "",
 			"pointer3" : "",
 			"hasVisited" : false,
+			"takeDamage" : "0",
 			"inspect": {
 				"Description" : "",
 				"Dec1" : "",
@@ -445,14 +467,15 @@
 		},
 		"Scenario10":
 		{
-			"Dialogue" : "INSERT DIALOGUE HERE ONCE MADE",
-			"Dec1" : "",
+			"Dialogue" : "You walk through the path, pushing aside all plants and leaves in your way.",
+			"Dec1" : "Continue",
 			"Dec2" : "",
 			"Dec3" : "",
-			"pointer1" : "",
+			"pointer1" : "Scenario12",
 			"pointer2" : "",
 			"pointer3" : "",
 			"hasVisited" : false,
+			"takeDamage" : "0",
 			"inspect": {
 				"Description" : "",
 				"Dec1" : "",
@@ -465,14 +488,15 @@
 		},
 		"Scenario11":
 		{
-			"Dialogue" : "INSERT DIALOGUE HERE ONCE MADE",
-			"Dec1" : "",
+			"Dialogue" : "You walk through the path, pushing aside all plants in your way. As you make your way through, you feel your skin start to irritate.",
+			"Dec1" : "Continue",
 			"Dec2" : "",
 			"Dec3" : "",
-			"pointer1" : "",
+			"pointer1" : "Scenario12",
 			"pointer2" : "",
 			"pointer3" : "",
 			"hasVisited" : false,
+			"takeDamage" : "0",
 			"inspect": {
 				"Description" : "",
 				"Dec1" : "",
@@ -485,7 +509,7 @@
 		},
 		"Scenario12":
 		{
-			"Dialogue" : "INSERT DIALOGUE HERE ONCE MADE",
+			"Dialogue" : "Clearing stuff here",
 			"Dec1" : "",
 			"Dec2" : "",
 			"Dec3" : "",
@@ -493,6 +517,7 @@
 			"pointer2" : "",
 			"pointer3" : "",
 			"hasVisited" : false,
+			"takeDamage" : "0",
 			"inspect": {
 				"Description" : "",
 				"Dec1" : "",
@@ -513,6 +538,7 @@
 			"pointer2" : "",
 			"pointer3" : "",
 			"hasVisited" : false,
+			"takeDamage" : "0",
 			"inspect": {
 				"Description" : "",
 				"Dec1" : "",
@@ -525,6 +551,27 @@
 		},
 		"Scenario14":
 		{
+			"Dialogue" : "Fishing has not been implemented yet",
+			"Dec1" : "",
+			"Dec2" : "",
+			"Dec3" : "",
+			"pointer1" : "",
+			"pointer2" : "",
+			"pointer3" : "",
+			"hasVisited" : false,
+			"takeDamage" : "0",
+			"inspect": {
+				"Description" : "",
+				"Dec1" : "",
+				"Dec2" : "",
+				"Dec3" : "",
+				"pointer1" : "",
+				"pointer2" : "",
+				"pointer3" : ""
+			}
+		},
+		"Scenario15":
+		{
 			"Dialogue" : "INSERT DIALOGUE HERE ONCE MADE",
 			"Dec1" : "",
 			"Dec2" : "",
@@ -533,6 +580,49 @@
 			"pointer2" : "",
 			"pointer3" : "",
 			"hasVisited" : false,
+			"takeDamage" : "0",
+			"inspect": {
+				"Description" : "",
+				"Dec1" : "",
+				"Dec2" : "",
+				"Dec3" : "",
+				"pointer1" : "",
+				"pointer2" : "",
+				"pointer3" : ""
+			}
+		},
+		"Scenario16":
+		{
+			"Dialogue" : "INSERT DIALOGUE HERE ONCE MADE",
+			"Dec1" : "",
+			"Dec2" : "",
+			"Dec3" : "",
+			"pointer1" : "",
+			"pointer2" : "",
+			"pointer3" : "",
+			"hasVisited" : false,
+			"takeDamage" : "0",
+			"inspect": {
+				"Description" : "",
+				"Dec1" : "",
+				"Dec2" : "",
+				"Dec3" : "",
+				"pointer1" : "",
+				"pointer2" : "",
+				"pointer3" : ""
+			}
+		},
+		"Scenario17":
+		{
+			"Dialogue" : "INSERT DIALOGUE HERE ONCE MADE",
+			"Dec1" : "",
+			"Dec2" : "",
+			"Dec3" : "",
+			"pointer1" : "",
+			"pointer2" : "",
+			"pointer3" : "",
+			"hasVisited" : false,
+			"takeDamage" : "0",
 			"inspect": {
 				"Description" : "",
 				"Dec1" : "",
