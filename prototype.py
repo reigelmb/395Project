@@ -1,6 +1,7 @@
 from tkinter import *
 import json
-#Import tkinter and json... Obviously
+
+# Import tkinter and json... Obviously
 
 '''class Player:
     def __init__(self):
@@ -31,41 +32,48 @@ import json
             self.cut == True
     def isAlive(self):
         return self.health > 0
-        
+    
+    def checkItem(itemRequired, inventory):
+        if itemRequired in inventory:
+            return True
+        else:
+            return False
+    
+
 '''
 root = Tk()
-#Set variable root to tk()
+# Set variable root to tk()
 root.geometry('900x900')
-#Set the geometry of the root variable to 900x900
+# Set the geometry of the root variable to 900x900
 with open('chapter1.json', 'r', encoding='utf-8') as f:
-    #Open json file and put store that into variable "json_object"
+    # Open json file and put store that into variable "json_object"
     json_chapter = json.load(f)
 
-
 with open('ItemList.json', 'r', encoding='utf-8') as f:
-    #Open json file and put store that into variable "json_object"
+    # Open json file and put store that into variable "json_object"
     json_items = json.load(f)
 
+
 class Window(Frame):
-    #Initialize Window class be where most of the game is created
+    # Initialize Window class be where most of the game is created
 
     def __init__(self, file, items, window=None):
         Frame.__init__(self, window)
         '''Declare __init__ method which is taking in the json files for the chapters, the list of items, and
         the window which is set to None'''
-        #Set self.window equal to window
+        # Set self.window equal to window
         self.window = window
 
-        #Set the background of self.window to black
+        # Set the background of self.window to black
         self.window['bg'] = "black"
 
-        #Give self.window the attribute of being fullscreen
+        # Give self.window the attribute of being fullscreen
         self.window.attributes('-fullscreen', True)
 
-        #Set variable self.file equal to the json file for the chapters
+        # Set variable self.file equal to the json file for the chapters
         self.file = file
 
-        #Set variable self.items equal to the json file for the items
+        # Set variable self.items equal to the json file for the items
         self.items = items
 
         '''set variable self.frame to create a frame whose parent is self.window and set the background color to black
@@ -76,7 +84,8 @@ class Window(Frame):
         '''Set the number of chapters completed so far to 0 so that when the player
         '''
         self.chapterNum = 0
-        self.title = Label(self.frame, text="Typical Monday", justify=CENTER, font=("Roman", 20), fg="orange", bg="black", width=85, wraplength=500)
+        self.title = Label(self.frame, text="Typical Monday", justify=CENTER, font=("Roman", 20), fg="orange",
+                           bg="black", width=85, wraplength=500)
         self.title.grid(row=0, column=0, columnspan=2, pady=100)
         self.START = Button(self.frame, text="Start", command=self.clickStartButton, justify=CENTER)
         self.START.grid(row=2, column=0, rowspan=2, pady=100, ipadx=50)
@@ -114,7 +123,8 @@ class Window(Frame):
                 if self.file[str(self.chapterNum)]["Scenario1"]["Dec3"] != "":
                     self.numButtons += 1
 
-        self.dialog = Label(self.frame, text=self.file[str(self.chapterNum)]["Scenario1"]["Dialogue"], justify=CENTER, font=("Roman", 20), fg="orange", bg="black", width=85, wraplength=500)
+        self.dialog = Label(self.frame, text=self.file[str(self.chapterNum)]["Scenario1"]["Dialogue"], justify=CENTER,
+                            font=("Roman", 20), fg="orange", bg="black", width=85, wraplength=500)
         self.dialog.grid(row=0, column=0, columnspan=self.numButtons, rowspan=2, pady=40, sticky="n")
         self.dialog.grid_rowconfigure(0, weight=1)
 
@@ -122,20 +132,28 @@ class Window(Frame):
                                        command=lambda: self.inspect("Scenario1"))
 
         if self.file[str(self.chapterNum)]["Scenario1"]["Dec1"] != "":
-            self.option1 = Button(self.frame, text=self.file[str(self.chapterNum)]["Scenario1"]["Dec1"], command=lambda: self.options(self.file[str(self.chapterNum)]['Scenario1']['pointer1']), width=10, justify=CENTER)
+            self.option1 = Button(self.frame, text=self.file[str(self.chapterNum)]["Scenario1"]["Dec1"],
+                                  command=lambda: self.options(
+                                      self.file[str(self.chapterNum)]['Scenario1']['pointer1']), width=10,
+                                  justify=CENTER)
             self.option1.grid(row=2, column=0, sticky="s", rowspan=2, pady=100)
             self.inspect_scenario.grid(row=2, column=1, sticky="s", rowspan=2, pady=100, ipadx=50)
 
         if self.file[str(self.chapterNum)]["Scenario1"]["Dec2"] != "":
-            self.option2 = Button(self.frame, text=self.file[str(self.chapterNum)]["Scenario1"]["Dec2"], command=lambda: self.options(self.file[str(self.chapterNum)]['Scenario1']['pointer2']), width=10, justify=CENTER)
+            self.option2 = Button(self.frame, text=self.file[str(self.chapterNum)]["Scenario1"]["Dec2"],
+                                  command=lambda: self.options(
+                                      self.file[str(self.chapterNum)]['Scenario1']['pointer2']), width=10,
+                                  justify=CENTER)
             self.option2.grid(row=2, column=1, rowspan=2, pady=100, ipadx=50)
             self.inspect_scenario.grid(row=2, column=2, sticky="s", rowspan=2, pady=100, ipadx=50)
 
         if self.file[str(self.chapterNum)]["Scenario1"]["Dec3"] != "":
-            self.option3 = Button(self.frame, text=self.file[str(self.chapterNum)]["Scenario1"]["Dec3"], command=lambda: self.options(self.file[str(self.chapterNum)]['Scenario1']['pointer3']), width=10, justify=CENTER)
+            self.option3 = Button(self.frame, text=self.file[str(self.chapterNum)]["Scenario1"]["Dec3"],
+                                  command=lambda: self.options(
+                                      self.file[str(self.chapterNum)]['Scenario1']['pointer3']), width=10,
+                                  justify=CENTER)
             self.option3.grid(row=2, column=2, sticky="s", rowspan=2, pady=100)
             self.inspect_scenario.grid(row=2, column=3, sticky="s", rowspan=2, pady=100, ipadx=50)
-
 
     def options(self, currentScenario):
         self.dialog.destroy()
@@ -155,7 +173,8 @@ class Window(Frame):
 
         if self.file[str(self.chapterNum)][currentScenario]["Dec1"] == "Quit":
 
-            self.dialog = Label(self.frame, text=self.file[str(self.chapterNum)][currentScenario]["Dialogue"], justify=CENTER,
+            self.dialog = Label(self.frame, text=self.file[str(self.chapterNum)][currentScenario]["Dialogue"],
+                                justify=CENTER,
                                 font=("Roman", 20), fg="orange", bg="black", width=85, wraplength=500)
             self.dialog.grid(row=0, column=0, columnspan=2, pady=75)
 
@@ -174,11 +193,13 @@ class Window(Frame):
             self.dialog.grid(row=0, column=0, columnspan=self.numButtons, pady=75)
 
             self.option1 = Button(self.frame, text=self.file[str(self.chapterNum)][currentScenario]["Dec1"],
-                                  command=lambda: self.options(self.file[str(self.chapterNum)][currentScenario]['pointer1']), justify=CENTER)
+                                  command=lambda: self.options(
+                                      self.file[str(self.chapterNum)][currentScenario]['pointer1']), justify=CENTER)
             self.option1.grid(row=2, column=0, sticky="s", rowspan=2, pady=100, ipadx=50)
 
             self.inspect_scenario = Button(self.frame, text="Inspect", justify=CENTER,
-                                           command=lambda: self.inspect(self.file[str(self.chapterNum)][currentScenario]))
+                                           command=lambda: self.inspect(
+                                               self.file[str(self.chapterNum)][currentScenario]))
             self.inspect_scenario.grid(row=2, column=1, sticky="s", rowspan=2, pady=100, ipadx=50)
 
         elif self.file[str(self.chapterNum)][currentScenario]["Dec3"] == "":
@@ -188,15 +209,18 @@ class Window(Frame):
             self.dialog.grid(row=0, column=0, columnspan=self.numButtons, pady=75)
 
             self.option1 = Button(self.frame, text=self.file[str(self.chapterNum)][currentScenario]["Dec1"],
-                                  command=lambda: self.options(self.file[str(self.chapterNum)][currentScenario]['pointer1']), justify=CENTER)
+                                  command=lambda: self.options(
+                                      self.file[str(self.chapterNum)][currentScenario]['pointer1']), justify=CENTER)
             self.option1.grid(row=2, column=0, sticky="s", rowspan=2, pady=100, ipadx=50)
 
             self.option2 = Button(self.frame, text=self.file[str(self.chapterNum)][currentScenario]["Dec2"],
-                                  command=lambda: self.options(self.file[str(self.chapterNum)][currentScenario]['pointer2']), justify=CENTER)
+                                  command=lambda: self.options(
+                                      self.file[str(self.chapterNum)][currentScenario]['pointer2']), justify=CENTER)
             self.option2.grid(row=2, column=1, rowspan=2, pady=100, ipadx=50)
 
             self.inspect_scenario = Button(self.frame, text="Inspect", justify=CENTER,
-                                           command=lambda: self.inspect(self.file[str(self.chapterNum)][currentScenario]))
+                                           command=lambda: self.inspect(
+                                               self.file[str(self.chapterNum)][currentScenario]))
             self.inspect_scenario.grid(row=2, column=2, sticky="s", rowspan=2, pady=100, ipadx=50)
 
         else:
@@ -206,19 +230,23 @@ class Window(Frame):
             self.dialog.grid(row=0, column=0, columnspan=self.numButtons, pady=75)
 
             self.option1 = Button(self.frame, text=self.file[str(self.chapterNum)][currentScenario]["Dec1"],
-                                  command=lambda: self.options(self.file[str(self.chapterNum)][currentScenario]['pointer1']), justify=CENTER)
+                                  command=lambda: self.options(
+                                      self.file[str(self.chapterNum)][currentScenario]['pointer1']), justify=CENTER)
             self.option1.grid(row=2, column=0, sticky="s", rowspan=2, ipadx=50, pady=100)
 
             self.option2 = Button(self.frame, text=self.file[str(self.chapterNum)][currentScenario]["Dec2"],
-                                  command=lambda: self.options(self.file[str(self.chapterNum)][currentScenario]['pointer2']), justify=CENTER)
+                                  command=lambda: self.options(
+                                      self.file[str(self.chapterNum)][currentScenario]['pointer2']), justify=CENTER)
             self.option2.grid(row=2, column=1, rowspan=2, ipadx=50, pady=100)
 
             self.option3 = Button(self.frame, text=self.file[str(self.chapterNum)][currentScenario]["Dec3"],
-                                  command=lambda: self.options(self.file[str(self.chapterNum)][currentScenario]['pointer3']), justify=CENTER)
+                                  command=lambda: self.options(
+                                      self.file[str(self.chapterNum)][currentScenario]['pointer3']), justify=CENTER)
             self.option3.grid(row=2, column=2, rowspan=2, ipadx=50, pady=100)
 
             self.inspect_scenario = Button(self.frame, text="Inspect", justify=CENTER,
-                                           command=lambda: self.inspect(self.file[str(self.chapterNum)][currentScenario]))
+                                           command=lambda: self.inspect(
+                                               self.file[str(self.chapterNum)][currentScenario]))
             self.inspect_scenario.grid(row=2, column=3, sticky="s", rowspan=2, pady=100, ipadx=50)
 
     def clickDieButton(self):
@@ -240,33 +268,37 @@ class Window(Frame):
 
         if self.file[str(self.chapterNum)][currentScenario]["inspect"]["Dec1"] == "":
             self.numButtons = 1
-            self.dialog = Label(self.frame, text=self.file[str(self.chapterNum)][currentScenario]["inspect"]["Description"],
+            self.dialog = Label(self.frame,
+                                text=self.file[str(self.chapterNum)][currentScenario]["inspect"]["Description"],
                                 justify=CENTER, font=("Roman", 20), fg="orange", bg="black", width=85, wraplength=500)
             self.dialog.grid(row=0, column=0, columnspan=self.numButtons, pady=75)
 
             self.go_back = Button(self.frame, text="Go Back", justify=CENTER,
-                                           command=lambda: self.options(self.file[str(self.chapterNum)][currentScenario]))
+                                  command=lambda: self.options(self.file[str(self.chapterNum)][currentScenario]))
             self.go_back.grid(row=2, column=0, sticky="s", rowspan=2, pady=100, ipadx=50)
 
         if self.file[str(self.chapterNum)][currentScenario]["inspect"]["Dec2"] == "":
             self.numButtons = 2
-
-            self.dialog = Label(self.frame, text=self.file[str(self.chapterNum)][currentScenario]["inspect"]["Description"],
+            self.dialog = Label(self.frame,
+                                text=self.file[str(self.chapterNum)][currentScenario]["inspect"]["Description"],
                                 justify=CENTER, font=("Roman", 20), fg="orange", bg="black", width=85, wraplength=500)
             self.dialog.grid(row=0, column=0, columnspan=self.numButtons, pady=75)
 
             self.option1 = Button(self.frame, text=self.file[str(self.chapterNum)][currentScenario]["inspect"]["Dec1"],
-                                  command=lambda: self.options(self.file[str(self.chapterNum)][currentScenario]["inspect"]["Description"]), justify=CENTER)
+                                  command=lambda: self.options(
+                                      self.file[str(self.chapterNum)][currentScenario]["inspect"]["Description"]),
+                                  justify=CENTER)
             self.option1.grid(row=2, column=0, sticky="s", rowspan=2, pady=100, ipadx=50)
 
             self.go_back = Button(self.frame, text="Go Back", justify=CENTER,
-                                           command=lambda: self.options(self.file[str(self.chapterNum)][currentScenario]))
+                                  command=lambda: self.options(self.file[str(self.chapterNum)][currentScenario]))
             self.go_back.grid(row=2, column=1, sticky="s", rowspan=2, pady=100, ipadx=50)
 
         elif self.file[str(self.chapterNum)][currentScenario]["Dec3"] == "":
             self.numButtons = 3
 
-            self.dialog = Label(self.frame, text=self.file[str(self.chapterNum)][currentScenario]["inspect"]["Description"],
+            self.dialog = Label(self.frame,
+                                text=self.file[str(self.chapterNum)][currentScenario]["inspect"]["Description"],
                                 justify=CENTER, font=("Roman", 20), fg="orange", bg="black", width=85, wraplength=500)
             self.dialog.grid(row=0, column=0, columnspan=self.numButtons, pady=75)
 
@@ -281,16 +313,18 @@ class Window(Frame):
             self.option2.grid(row=2, column=1, rowspan=2, pady=100, ipadx=50)
 
             self.go_back = Button(self.frame, text="Go Back", justify=CENTER,
-                                           command=lambda: self.inspect(self.file[str(self.chapterNum)][currentScenario]))
+                                  command=lambda: self.inspect(self.file[str(self.chapterNum)][currentScenario]))
             self.go_back.grid(row=2, column=2, sticky="s", rowspan=2, pady=100, ipadx=50)
 
         else:
             self.numButtons = 4
-            self.dialog = Label(self.frame, text=self.file[str(self.chapterNum)][currentScenario]["inspect"]["Description"],
+            self.dialog = Label(self.frame,
+                                text=self.file[str(self.chapterNum)][currentScenario]["inspect"]["Description"],
                                 justify=CENTER, font=("Roman", 20), fg="orange", bg="black", width=85, wraplength=500)
             self.dialog.grid(row=0, column=0, columnspan=self.numButtons, pady=75)
             self.option1 = Button(self.frame, text=self.file[str(self.chapterNum)][currentScenario]["inspect"]["Dec1"],
-                                  command=lambda: self.options(self.file[str(self.chapterNum)][currentScenario]['pointer1']), justify=CENTER)
+                                  command=lambda: self.options(
+                                      self.file[str(self.chapterNum)][currentScenario]['pointer1']), justify=CENTER)
             self.option1.grid(row=2, column=0, sticky="s", rowspan=2, ipadx=50, pady=100)
 
             self.option2 = Button(self.frame, text=self.file[str(self.chapterNum)][currentScenario]["inspect"]["Dec2"],
@@ -303,7 +337,7 @@ class Window(Frame):
                                       self.file[str(self.chapterNum)][currentScenario]['pointer3']), justify=CENTER)
             self.option3.grid(row=2, column=2, rowspan=2, ipadx=50, pady=100)
             self.go_back = Button(self.frame, text="Go Back", justify=CENTER,
-                                           command=lambda: self.inspect(self.file[str(self.chapterNum)][currentScenario]))
+                                  command=lambda: self.inspect(self.file[str(self.chapterNum)][currentScenario]))
             self.go_back.grid(row=2, column=3, sticky="s", rowspan=2, pady=100, ipadx=50)
 
     def itemDescription(self, currentScenario, pointer):
@@ -315,10 +349,6 @@ class Window(Frame):
                 if self.numButtons == 4:
                     self.option3.destroy()
         self.dialog.destroy()
-
-
-
-
 
     '''def inventory(self):
         self.inventory_window = Toplevel(self.window)
