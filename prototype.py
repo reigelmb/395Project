@@ -32,13 +32,13 @@ import json
             self.cut == True
     def isAlive(self):
         return self.health > 0
-    
+
     def checkItem(itemRequired, inventory):
         if itemRequired in inventory:
             return True
         else:
             return False
-    
+
 
 '''
 root = Tk()
@@ -84,23 +84,39 @@ class Window(Frame):
         '''Set the number of chapters completed so far to 0 so that when the player
         '''
         self.chapterNum = 0
+
+        '''
+        Set self.title to a label. Make that labels parent self.frame, Set the text to "Typical monday and make
+        sure it is properly aligned in the center.
+        '''
         self.title = Label(self.frame, text="Typical Monday", justify=CENTER, font=("Roman", 20), fg="orange",
                            bg="black", width=85, wraplength=500)
+        '''In the grid, set self.title to row 0 and column 0. Have it span 2 columns'''
         self.title.grid(row=0, column=0, columnspan=2, pady=100)
+
+        '''Create self.START variable which will be a button whose parent is self.frame. Make the text for it 
+        "Start" and make it call the clickStartButton function when pressed make sure it is aligned
+        to the center'''
         self.START = Button(self.frame, text="Start", command=self.clickStartButton, justify=CENTER)
+
+        '''Align the self.START button to be in row 2  and column 0 of the grid and have it span
+        2 rows'''
         self.START.grid(row=2, column=0, rowspan=2, pady=100, ipadx=50)
+
+        '''Create self.DIE button g'''
         self.DIE = Button(self.frame, text="Quit", command=self.clickDieButton, justify=CENTER)
         self.DIE.grid(row=2, column=1, rowspan=2, pady=100, ipadx=50)
-        #self.image = PhotoImage(file="StartPhoto.png")
+        # self.image = PhotoImage(file="StartPhoto.png")
 
     def clickStartButton(self):
         self.frame.destroy()
-        self.numButtons = 3
         self.inventory_items = {"27": "Burnt Lasagna"}
         self.menu = Menu(self.window, tearoff=0, bg="white", fg="orange")
         self.inventory = Menu(self.menu)
         for i in self.inventory_items:
             self.inventory.add_command(label=self.inventory_items[str(i)])
+
+        self.inventory.add_command(command=self.displayInventory)
         self.menu.add_cascade(label="Inventory", menu=self.inventory)
         self.menu.add_command(label="Help")
         self.menu.add_command(label="Quit", command=self.clickDieButton)
@@ -113,54 +129,47 @@ class Window(Frame):
         self.window["bg"] = "black"
         self.frame = Frame(self.window, bg="black")
         self.frame.grid(row=0, column=0, padx=10, pady=10)
-        self.numButtons = 1
-        if self.file[str(self.chapterNum)]["Scenario1"]["Dec1"] != "":
+        '''if self.file[str(self.chapterNum)]["Scenario1"]["Dec1"] != "":
             self.numButtons += 1
 
             if self.file[str(self.chapterNum)]["Scenario1"]["Dec2"] != "":
                 self.numButtons += 1
 
                 if self.file[str(self.chapterNum)]["Scenario1"]["Dec3"] != "":
-                    self.numButtons += 1
+                    self.numButtons += 1'''
+
+        if self.file[str(self.chapterNum)]["Scenario1"]["Dec1"] != "":
+            self.numButtons = 2
+            self.option1 = Button(self.frame, text=self.file[str(self.chapterNum)]["Scenario1"]["Dec1"],
+                                  command=lambda: self.options(self.file[str(self.chapterNum)]['Scenario1']['pointer1']),
+                                  justify=CENTER)
+            self.option1.grid(row=2, column=0, sticky="s", rowspan=2, pady=100)
+            #self.inspect_scenario.grid(row=2, column=1, sticky="s", rowspan=2, pady=100, ipadx=50)
+
+        if self.file[str(self.chapterNum)]["Scenario1"]["Dec2"] != "":
+            self.numButtons = 3
+            self.option2 = Button(self.frame, text=self.file[str(self.chapterNum)]["Scenario1"]["Dec2"],
+                                  command=lambda: self.options(self.file[str(self.chapterNum)]['Scenario1']['pointer2']),
+                                  justify=CENTER)
+            self.option2.grid(row=2, column=1, rowspan=2, pady=100, ipadx=50)
+
+        if self.file[str(self.chapterNum)]["Scenario1"]["Dec3"] != "":
+            self.numButtons = 4
+            self.option3 = Button(self.frame, text=self.file[str(self.chapterNum)]["Scenario1"]["Dec3"],
+                                  command=lambda: self.options(
+                                      self.file[str(self.chapterNum)]['Scenario1']['pointer3']),
+                                  justify=CENTER)
+            self.option3.grid(row=2, column=2, sticky="s", rowspan=2, pady=100)
+
+        self.inspect_scenario = Button(self.frame, text="Inspect", justify=CENTER, command=lambda: self.inspect("Scenario1"))
+        self.inspect_scenario.grid(row=2, column=(self.numButtons-1), sticky="s", rowspan=2, pady=100, ipadx=50)
 
         self.dialog = Label(self.frame, text=self.file[str(self.chapterNum)]["Scenario1"]["Dialogue"], justify=CENTER,
                             font=("Roman", 20), fg="orange", bg="black", width=85, wraplength=500)
         self.dialog.grid(row=0, column=0, columnspan=self.numButtons, rowspan=2, pady=40, sticky="n")
         self.dialog.grid_rowconfigure(0, weight=1)
 
-        self.inspect_scenario = Button(self.frame, text="Inspect", justify=CENTER,
-                                       command=lambda: self.inspect("Scenario1"))
-
-        if self.file[str(self.chapterNum)]["Scenario1"]["Dec1"] != "":
-            self.option1 = Button(self.frame, text=self.file[str(self.chapterNum)]["Scenario1"]["Dec1"],
-                                  command=lambda: self.options(
-                                      self.file[str(self.chapterNum)]['Scenario1']['pointer1']), width=10,
-                                  justify=CENTER)
-            self.option1.grid(row=2, column=0, sticky="s", rowspan=2, pady=100)
-            self.inspect_scenario.grid(row=2, column=1, sticky="s", rowspan=2, pady=100, ipadx=50)
-
-        if self.file[str(self.chapterNum)]["Scenario1"]["Dec2"] != "":
-            self.option2 = Button(self.frame, text=self.file[str(self.chapterNum)]["Scenario1"]["Dec2"],
-                                  command=lambda: self.options(
-                                      self.file[str(self.chapterNum)]['Scenario1']['pointer2']), width=10,
-                                  justify=CENTER)
-            self.option2.grid(row=2, column=1, rowspan=2, pady=100, ipadx=50)
-            self.inspect_scenario.grid(row=2, column=2, sticky="s", rowspan=2, pady=100, ipadx=50)
-
-        if self.file[str(self.chapterNum)]["Scenario1"]["Dec3"] != "":
-            self.option3 = Button(self.frame, text=self.file[str(self.chapterNum)]["Scenario1"]["Dec3"],
-                                  command=lambda: self.options(
-                                      self.file[str(self.chapterNum)]['Scenario1']['pointer3']), width=10,
-                                  justify=CENTER)
-            self.option3.grid(row=2, column=2, sticky="s", rowspan=2, pady=100)
-            self.inspect_scenario.grid(row=2, column=3, sticky="s", rowspan=2, pady=100, ipadx=50)
-
-    def options(self, currentScenario):
-        if self.did_inspect == 1:
-            self.go_back.destroy()
-            self.did_inspect = 0
-        self.dialog.destroy()
-
+    def displayScenario(self, currentScenario, columnSpan):
         if self.numButtons >= 2:
             self.inspect_scenario.destroy()
             self.option1.destroy()
@@ -171,88 +180,81 @@ class Window(Frame):
                 if self.numButtons == 4:
                     self.option3.destroy()
 
-        if self.file[str(self.chapterNum)][currentScenario]["Dec1"] == "Quit":
+        #if self.file[str(self.chapterNum)][currentScenario]["Dec2"] != "":
 
+
+
+    def options(self, currentScenario):
+        if self.did_inspect:
+            self.go_back.destroy()
+            self.did_inspect = False
+
+        self.dialog.destroy()
+
+        if self.numButtons >= 1:
+            self.inspect_scenario.destroy()
+            self.option1.destroy()
+
+            if self.numButtons >= 3:
+                self.option2.destroy()
+
+                if self.numButtons == 4:
+                    self.option3.destroy()
+
+
+        if self.file[str(self.chapterNum)][currentScenario]["Dec1"] == "Quit":
             self.dialog = Label(self.frame, text=self.file[str(self.chapterNum)][currentScenario]["Dialogue"],
-                                justify=CENTER,
-                                font=("Roman", 20), fg="orange", bg="black", width=85, wraplength=500)
+                                justify=CENTER, font=("Roman", 20), fg="orange", bg="black", width=85, wraplength=500)
             self.dialog.grid(row=0, column=0, columnspan=2, pady=75)
 
-            self.option1 = Button(self.frame, text="Quit", width=10, command=self.clickDieButton)
+            self.option1 = Button(self.frame, text="Quit", command=self.clickDieButton)
             self.option1.grid(row=2, column=0, sticky="s", rowspan=2, pady=100, ipadx=50)
 
             self.chapterNum += 1
 
-            self.option2 = Button(self.frame, text="Continue?", width=10, command=self.clickStartButton)
+            self.option2 = Button(self.frame, text="Continue?", command=self.clickStartButton)
             self.option2.grid(row=2, column=1, rowspan=2, pady=100, ipadx=50)
-
-        elif self.file[str(self.chapterNum)][currentScenario]["Dec2"] == "":
-            self.numButtons = 2
-            self.dialog = Label(self.frame, text=self.file[str(self.chapterNum)][currentScenario]["Dialogue"],
-                                justify=CENTER, font=("Roman", 20), fg="orange", bg="black", width=85, wraplength=500)
-            self.dialog.grid(row=0, column=0, columnspan=self.numButtons, pady=75)
-
-            self.option1 = Button(self.frame, text=self.file[str(self.chapterNum)][currentScenario]["Dec1"],
-                                  command=lambda: self.options(
-                                      self.file[str(self.chapterNum)][currentScenario]['pointer1']), justify=CENTER)
-            self.option1.grid(row=2, column=0, sticky="s", rowspan=2, pady=100, ipadx=50)
-
-            self.inspect_scenario = Button(self.frame, text="Inspect", justify=CENTER,
-                                           command=lambda: self.inspect(currentScenario))
-            self.inspect_scenario.grid(row=2, column=1, sticky="s", rowspan=2, pady=100, ipadx=50)
-
-        elif self.file[str(self.chapterNum)][currentScenario]["Dec3"] == "":
-            self.numButtons = 3
-            self.dialog = Label(self.frame, text=self.file[str(self.chapterNum)][currentScenario]["Dialogue"],
-                                justify=CENTER, font=("Roman", 20), fg="orange", bg="black", width=85, wraplength=500)
-            self.dialog.grid(row=0, column=0, columnspan=self.numButtons, pady=75)
-
-            self.option1 = Button(self.frame, text=self.file[str(self.chapterNum)][currentScenario]["Dec1"],
-                                  command=lambda: self.options(
-                                      self.file[str(self.chapterNum)][currentScenario]['pointer1']), justify=CENTER)
-            self.option1.grid(row=2, column=0, sticky="s", rowspan=2, pady=100, ipadx=50)
-
-            self.option2 = Button(self.frame, text=self.file[str(self.chapterNum)][currentScenario]["Dec2"],
-                                  command=lambda: self.options(
-                                      self.file[str(self.chapterNum)][currentScenario]['pointer2']), justify=CENTER)
-            self.option2.grid(row=2, column=1, rowspan=2, pady=100, ipadx=50)
-
-            self.inspect_scenario = Button(self.frame, text="Inspect", justify=CENTER,
-                                           command=lambda: self.inspect(currentScenario))
-            self.inspect_scenario.grid(row=2, column=2, sticky="s", rowspan=2, pady=100, ipadx=50)
-
         else:
-            self.numButtons = 4
+            if self.file[str(self.chapterNum)][currentScenario]["Dec1"] != "":
+                self.numButtons = 2
+
+                self.option1 = Button(self.frame, text=self.file[str(self.chapterNum)][currentScenario]["Dec1"],
+                                      command=lambda: self.options(self.file[str(self.chapterNum)][currentScenario]['pointer1']), justify=CENTER)
+                self.option1.grid(row=2, column=0, sticky="s", rowspan=2, pady=100, ipadx=50)
+
+            if self.file[str(self.chapterNum)][currentScenario]["Dec2"] != "":
+                self.numButtons = 3
+
+                self.option2 = Button(self.frame, text=self.file[str(self.chapterNum)][currentScenario]["Dec2"],
+                                  command=lambda: self.options(
+                                      self.file[str(self.chapterNum)][currentScenario]['pointer2']), justify=CENTER)
+                self.option2.grid(row=2, column=1, rowspan=2, pady=100, ipadx=50)
+
+            if self.file[str(self.chapterNum)][currentScenario]["Dec3"] != "":
+                self.numButtons = 4
+
+                self.option3 = Button(self.frame, text=self.file[str(self.chapterNum)][currentScenario]["Dec3"],
+                                      command=lambda: self.options(self.file[str(self.chapterNum)][currentScenario]['pointer3']), justify=CENTER)
+                self.option3.grid(row=2, column=2, rowspan=2, ipadx=50, pady=100)
+
+            self.inspect_scenario = Button(self.frame, text="Inspect", justify=CENTER,
+                                           command=lambda: self.inspect(currentScenario))
+            self.inspect_scenario.grid(row=2, column=(self.numButtons-1), sticky="s", rowspan=2, pady=100, ipadx=50)
+
             self.dialog = Label(self.frame, text=self.file[str(self.chapterNum)][currentScenario]["Dialogue"],
                                 justify=CENTER, font=("Roman", 20), fg="orange", bg="black", width=85, wraplength=500)
             self.dialog.grid(row=0, column=0, columnspan=self.numButtons, pady=75)
 
-            self.option1 = Button(self.frame, text=self.file[str(self.chapterNum)][currentScenario]["Dec1"],
-                                  command=lambda: self.options(
-                                      self.file[str(self.chapterNum)][currentScenario]['pointer1']), justify=CENTER)
-            self.option1.grid(row=2, column=0, sticky="s", rowspan=2, ipadx=50, pady=100)
 
-            self.option2 = Button(self.frame, text=self.file[str(self.chapterNum)][currentScenario]["Dec2"],
-                                  command=lambda: self.options(
-                                      self.file[str(self.chapterNum)][currentScenario]['pointer2']), justify=CENTER)
-            self.option2.grid(row=2, column=1, rowspan=2, ipadx=50, pady=100)
 
-            self.option3 = Button(self.frame, text=self.file[str(self.chapterNum)][currentScenario]["Dec3"],
-                                  command=lambda: self.options(
-                                      self.file[str(self.chapterNum)][currentScenario]['pointer3']), justify=CENTER)
-            self.option3.grid(row=2, column=2, rowspan=2, ipadx=50, pady=100)
-
-            self.inspect_scenario = Button(self.frame, text="Inspect", justify=CENTER,
-                                           command=lambda: self.inspect(currentScenario))
-            self.inspect_scenario.grid(row=2, column=3, sticky="s", rowspan=2, pady=100, ipadx=50)
 
     def clickDieButton(self):
         exit()
 
     def inspect(self, currentScenario):
-        self.did_inspect = 1
+        self.did_inspect = True
         self.inspect_scenario.destroy()
-        if self.numButtons >= 2:
+        if self.numButtons >= 1:
             self.option1.destroy()
 
             if self.numButtons >= 3:
@@ -262,78 +264,40 @@ class Window(Frame):
                     self.option3.destroy()
 
         self.dialog.destroy()
+        self.numButtons = 1
 
-        if self.file[str(self.chapterNum)][currentScenario]["inspect"]["Dec1"] == "":
-            self.numButtons = 1
-            self.dialog = Label(self.frame, text=self.file[str(self.chapterNum)][currentScenario]["inspect"]["Description"],
-                                justify=CENTER, font=("Roman", 20), fg="orange", bg="black", width=85, wraplength=500)
-            self.dialog.grid(row=0, column=0, columnspan=self.numButtons, pady=75)
-
-            '''self.go_back = Button(self.frame, text="Go Back", justify=CENTER,
-                                  command=lambda: self.options(self.file[str(self.chapterNum)][currentScenario]))
-            self.go_back.grid(row=2, column=0, sticky="s", rowspan=2, pady=100, ipadx=50)'''
-
-        if self.file[str(self.chapterNum)][currentScenario]["inspect"]["Dec2"] == "":
+        if self.file[str(self.chapterNum)][currentScenario]["inspect"]["Dec1"] != "":
             self.numButtons = 2
-            self.dialog = Label(self.frame,
-                                text=self.file[str(self.chapterNum)][currentScenario]["inspect"]["Description"],
-                                justify=CENTER, font=("Roman", 20), fg="orange", bg="black", width=85, wraplength=500)
-            self.dialog.grid(row=0, column=0, columnspan=self.numButtons, pady=75)
-
             self.option1 = Button(self.frame, text=self.file[str(self.chapterNum)][currentScenario]["inspect"]["Dec1"],
                                   command=lambda: self.itemDescription(currentScenario, self.file[str(self.chapterNum)][currentScenario]["inspect"]["pointer1"]),
-                                  justify=CENTER)
+                                    justify=CENTER)
             self.option1.grid(row=2, column=0, sticky="s", rowspan=2, pady=100, ipadx=50)
 
-            self.go_back = Button(self.frame, text="Go Back", justify=CENTER,
-                                  command=lambda: self.options(currentScenario))
-            self.go_back.grid(row=2, column=1, sticky="s", rowspan=2, pady=100, ipadx=50)
-
-        elif self.file[str(self.chapterNum)][currentScenario]["Dec3"] == "":
+        if self.file[str(self.chapterNum)][currentScenario]["inspect"]["Dec2"] != "":
             self.numButtons = 3
 
-            self.dialog = Label(self.frame,
-                                text=self.file[str(self.chapterNum)][currentScenario]["inspect"]["Description"],
-                                justify=CENTER, font=("Roman", 20), fg="orange", bg="black", width=85, wraplength=500)
-            self.dialog.grid(row=0, column=0, columnspan=self.numButtons, pady=75)
-
-            self.option1 = Button(self.frame, text=self.file[str(self.chapterNum)][currentScenario]["inspect"]["Dec1"],
-                                  command=lambda: self.itemDescription(currentScenario, self.file[str(self.chapterNum)][currentScenario]["inspect"]["pointer1"]), justify=CENTER)
-            self.option1.grid(row=2, column=0, sticky="s", rowspan=2, pady=100, ipadx=50)
-
             self.option2 = Button(self.frame, text=self.file[str(self.chapterNum)][currentScenario]["inspect"]["Dec2"],
-                                  command=lambda: self.itemDescription(currentScenario, self.file[str(self.chapterNum)][currentScenario]["inspect"]["pointer2"]), justify=CENTER)
+                              command=lambda: self.itemDescription(currentScenario, self.file[str(self.chapterNum)][currentScenario]["inspect"]["pointer2"]), justify=CENTER)
             self.option2.grid(row=2, column=1, rowspan=2, pady=100, ipadx=50)
 
-            self.go_back = Button(self.frame, text="Go Back", justify=CENTER,
-                                  command=lambda: self.options(currentScenario))
-            self.go_back.grid(row=2, column=2, sticky="s", rowspan=2, pady=100, ipadx=50)
-
-        else:
+        if self.file[str(self.chapterNum)][currentScenario]["inspect"]["Dec3"] != "":
             self.numButtons = 4
-            self.dialog = Label(self.frame,
-                                text=self.file[str(self.chapterNum)][currentScenario]["inspect"]["Description"],
-                                justify=CENTER, font=("Roman", 20), fg="orange", bg="black", width=85, wraplength=500)
-            self.dialog.grid(row=0, column=0, columnspan=self.numButtons, pady=75)
-            self.option1 = Button(self.frame, text=self.file[str(self.chapterNum)][currentScenario]["inspect"]["Dec1"],
-                                  command=lambda: self.itemDescription(currentScenario, self.file[str(self.chapterNum)][currentScenario]["inspect"]["pointer1"]), justify=CENTER)
-            self.option1.grid(row=2, column=0, sticky="s", rowspan=2, ipadx=50, pady=100)
-
-            self.option2 = Button(self.frame, text=self.file[str(self.chapterNum)][currentScenario]["inspect"]["Dec2"],
-                                  command=lambda: self.itemDescription(currentScenario, self.file[str(self.chapterNum)][currentScenario]["inspect"]["pointer2"]), justify=CENTER)
-            self.option2.grid(row=2, column=1, rowspan=2, ipadx=50, pady=100)
-
             self.option3 = Button(self.frame, text=self.file[str(self.chapterNum)][currentScenario]["inspect"]["Dec3"],
                                   command=lambda: self.itemDescription(currentScenario, self.file[str(self.chapterNum)][currentScenario]["inspect"]["pointer3"]), justify=CENTER)
             self.option3.grid(row=2, column=2, rowspan=2, ipadx=50, pady=100)
-            self.go_back = Button(self.frame, text="Go Back", justify=CENTER,
-                                  command=lambda: self.options(currentScenario))
-            self.go_back.grid(row=2, column=3, sticky="s", rowspan=2, pady=100, ipadx=50)
+
+
+        self.go_back = Button(self.frame, text="Go Back", justify=CENTER, command=lambda: self.options(currentScenario))
+        self.go_back.grid(row=2, column=(self.numButtons-1), sticky="s", rowspan=2, pady=100, ipadx=50)
+
+        self.dialog = Label(self.frame, text=self.file[str(self.chapterNum)][currentScenario]["inspect"]["Description"],
+                    justify=CENTER, font=("Roman", 20), fg="orange", bg="black", width=85, wraplength=500)
+        self.dialog.grid(row=0, column=0, columnspan=self.numButtons, pady=75)
 
     def itemDescription(self, currentScenario, pointer):
         self.go_back.destroy()
         if self.numButtons >= 2:
-            #self.inspect_scenario.destroy()
+            self.inspect_scenario.destroy()
             self.option1.destroy()
             if self.numButtons >= 3:
                 self.option2.destroy()
@@ -341,16 +305,29 @@ class Window(Frame):
                     self.option3.destroy()
         self.dialog.destroy()
         self.numButtons = 2
+
         self.item = Label(self.frame, text=self.items["Items"][pointer]["Description"], justify=CENTER)
         self.item.grid(row=0, column=0, columnspan=self.numButtons, pady=75)
-        self.item_option1 = Button(self.frame, text="Pick up", command=lambda: self.addItem(currentScenario, pointer))
-        self.item_option1.grid(row=2, column=0, pady=75)
-        self.item_option2 = Button(self.frame, text="Leave it")
-        self.item_option2.grid(row=2, column=1, pady=75)
+
+        self.option1 = Button(self.frame, text="Pick up", command=lambda: self.addItem(currentScenario, pointer))
+        self.option1.grid(row=2, column=0, pady=75)
+
+        self.option2 = Button(self.frame, text="Leave it", command=lambda: [self.option2.destroy(), self.inspect(currentScenario)])
+        self.option2.grid(row=2, column=1, pady=75)
 
     def addItem(self, currentScenario, pointer):
+        self.option1.destroy()
+        self.option2.destroy()
+        self.numButtons = 0
+        self.item.destroy()
         self.inventory_items[self.items["Items"][pointer]["Name"]] = self.items["Items"][pointer]["Type"]
-        print(self.inventory_items)
+        self.file[str(self.chapterNum)][currentScenario]["inspect"][pointer] = ""
+        self.displayInventory(currentScenario, pointer)
+
+    def displayInventory(self, currentScenario, pointer):
+        self.inventory.add_command(label=self.items["Items"][pointer]["Name"])
+        self.inspect(currentScenario)
+
     '''def inventory(self):
         self.inventory_window = Toplevel(self.window)
         self.inventory_items = {}
