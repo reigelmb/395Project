@@ -3,7 +3,7 @@ import json
 
 # Import tkinter and json... Obviously
 
-'''class Player:
+class Player:
     def __init__(self):
         self.health = 5.0
         self.movement = 10.0
@@ -12,24 +12,26 @@ import json
         self.cut = False
 
     def update(self, status):
-        //Updates movement
+        #Updates movement
         if self.movement > 0:
-            self.movement -=1
-        //Updates poison/checks poison
+            self.movement-=1
+        #Updates poison/checks poison
         if self.poison == True:
             self.health -=.5
         elif status == "poison":
             self.poison = True
-        //Updates burn/checks burn
+        #Updates burn/checks burn
         if self.burn == True:
+            self.health -= .5
+            print(self.health)
             print("burned but no effect yet")
         elif status == "burn":
             self.burn = True
-        //Updates cut/checks cut
+        #Updates cut/checks cut
         if self.cut == True:
             self.health -=.5
         elif status == "cut":
-            self.cut == True
+            self.cut = True
     def isAlive(self):
         return self.health > 0
 
@@ -40,7 +42,7 @@ import json
             return False
 
 
-'''
+
 root = Tk()
 # Set variable root to tk()
 root.geometry('900x900')
@@ -81,7 +83,8 @@ class Window(Frame):
         self.frame = Frame(self.window, bg="black")
         self.frame.grid(row=0, column=0, padx=10, pady=10)
 
-        '''Set the number of chapters completed so far to 0 so that when the player
+        '''
+        Set the number of chapters completed so far to 0 so that when the player
         '''
         self.chapterNum = 0
 
@@ -107,11 +110,14 @@ class Window(Frame):
         self.DIE = Button(self.frame, text="Quit", command=self.clickDieButton, justify=CENTER)
         self.DIE.grid(row=2, column=1, rowspan=2, pady=100, ipadx=50)
         # self.image = PhotoImage(file="StartPhoto.png")
+        self.player = Player()
 
     def clickStartButton(self):
         self.frame.destroy()
         self.inventory_items = {"27": "Burnt Lasagna"}
         self.menu = Menu(self.window, tearoff=0, bg="white", fg="orange")
+
+        self.status = ""
         self.inventory = Menu(self.menu)
         for i in self.inventory_items:
             self.inventory.add_command(label=self.inventory_items[str(i)])
@@ -129,14 +135,8 @@ class Window(Frame):
         self.window["bg"] = "black"
         self.frame = Frame(self.window, bg="black")
         self.frame.grid(row=0, column=0, padx=10, pady=10)
-        '''if self.file[str(self.chapterNum)]["Scenario1"]["Dec1"] != "":
-            self.numButtons += 1
 
-            if self.file[str(self.chapterNum)]["Scenario1"]["Dec2"] != "":
-                self.numButtons += 1
-
-                if self.file[str(self.chapterNum)]["Scenario1"]["Dec3"] != "":
-                    self.numButtons += 1'''
+        self.player.update(self.status)
 
         if self.file[str(self.chapterNum)]["Scenario1"]["Dec1"] != "":
             self.numButtons = 2
@@ -144,7 +144,6 @@ class Window(Frame):
                                   command=lambda: self.options(self.file[str(self.chapterNum)]['Scenario1']['pointer1']),
                                   justify=CENTER)
             self.option1.grid(row=2, column=0, sticky="s", rowspan=2, pady=100)
-            #self.inspect_scenario.grid(row=2, column=1, sticky="s", rowspan=2, pady=100, ipadx=50)
 
         if self.file[str(self.chapterNum)]["Scenario1"]["Dec2"] != "":
             self.numButtons = 3
@@ -156,8 +155,7 @@ class Window(Frame):
         if self.file[str(self.chapterNum)]["Scenario1"]["Dec3"] != "":
             self.numButtons = 4
             self.option3 = Button(self.frame, text=self.file[str(self.chapterNum)]["Scenario1"]["Dec3"],
-                                  command=lambda: self.options(
-                                      self.file[str(self.chapterNum)]['Scenario1']['pointer3']),
+                                  command=lambda: self.options(self.file[str(self.chapterNum)]['Scenario1']['pointer3']),
                                   justify=CENTER)
             self.option3.grid(row=2, column=2, sticky="s", rowspan=2, pady=100)
 
@@ -169,7 +167,7 @@ class Window(Frame):
         self.dialog.grid(row=0, column=0, columnspan=self.numButtons, rowspan=2, pady=40, sticky="n")
         self.dialog.grid_rowconfigure(0, weight=1)
 
-    def displayScenario(self, currentScenario, columnSpan):
+    '''def displayScenario(self, currentScenario, columnSpan):
         if self.numButtons >= 2:
             self.inspect_scenario.destroy()
             self.option1.destroy()
@@ -180,7 +178,7 @@ class Window(Frame):
                 if self.numButtons == 4:
                     self.option3.destroy()
 
-        #if self.file[str(self.chapterNum)][currentScenario]["Dec2"] != "":
+        #if self.file[str(self.chapterNum)][currentScenario]["Dec2"] != "":'''
 
 
 
@@ -190,6 +188,11 @@ class Window(Frame):
             self.did_inspect = False
 
         self.dialog.destroy()
+
+        if self.file[str(self.chapterNum)][currentScenario]["takeDamage"] != "0":
+            self.status = self.file[str(self.chapterNum)][currentScenario]["takeDamage"]
+            self.player.update(self.status)
+            print("You got burned :(")
 
         if self.numButtons >= 1:
             self.inspect_scenario.destroy()
@@ -210,10 +213,15 @@ class Window(Frame):
             self.option1 = Button(self.frame, text="Quit", command=self.clickDieButton)
             self.option1.grid(row=2, column=0, sticky="s", rowspan=2, pady=100, ipadx=50)
 
-            self.chapterNum += 1
+            if self.file[str(self.chapterNum)][currentScenario]["Dec2"] == "Go back to previous Scenario?":
+                self.option2 = Button(self.frame, text=self.file[str(self.chapterNum)][currentScenario]["Dec2"],
+                                      command=lambda: self.options(self.file[str(self.chapterNum)][currentScenario]['pointer2']), justify=CENTER)
+                self.option2.grid(row=2, column=1, rowspan=2, pady=100, ipadx=50)
+            else:
+                self.chapterNum += 1
 
-            self.option2 = Button(self.frame, text="Continue?", command=self.clickStartButton)
-            self.option2.grid(row=2, column=1, rowspan=2, pady=100, ipadx=50)
+                self.option2 = Button(self.frame, text="Continue?", command=self.clickStartButton)
+                self.option2.grid(row=2, column=1, rowspan=2, pady=100, ipadx=50)
         else:
             if self.file[str(self.chapterNum)][currentScenario]["Dec1"] != "":
                 self.numButtons = 2
@@ -306,7 +314,8 @@ class Window(Frame):
         self.dialog.destroy()
         self.numButtons = 2
 
-        self.item = Label(self.frame, text=self.items["Items"][pointer]["Description"], justify=CENTER)
+        self.item = Label(self.frame, text=self.items["Items"][pointer]["Description"], justify=CENTER,
+                          font=("Roman", 20), fg="orange", bg="black", width=85, wraplength=500)
         self.item.grid(row=0, column=0, columnspan=self.numButtons, pady=75)
 
         self.option1 = Button(self.frame, text="Pick up", command=lambda: self.addItem(currentScenario, pointer))
@@ -327,16 +336,6 @@ class Window(Frame):
     def displayInventory(self, currentScenario, pointer):
         self.inventory.add_command(label=self.items["Items"][pointer]["Name"])
         self.inspect(currentScenario)
-
-    '''def inventory(self):
-        self.inventory_window = Toplevel(self.window)
-        self.inventory_items = {}
-        self.inventory_window.geometry("200x400")
-        self.menu.add(OptionMenu, )
-        self.inventory_window['bg'] = "gray"
-        self.title = Label(self.inventory_window, text="Inventory", justify=CENTER, font=("Roman", 20), fg="orange",
-                           bg="gray", width=15, wraplength=200)
-        self.title.grid(row=0, column=0)'''
 
 
 window = Window(json_chapter, json_items, window=root)
