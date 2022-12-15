@@ -1,144 +1,304 @@
-{
+ {
   "Items": {
     "0": {
       "Name": "PocketKnife",
       "Type": "Tool",
-      "Description": "This is a PocketKnife you have from home. You can use it to cut things."
+      "Description": "This is a PocketKnife you have from home. You can use it to cut things.",
+      "Weight" : "1",
+      "Effect" : "",
+      "Amount" : "",
+      "isReusable" : true,
+      "useDialogue" : ""
     },
     "1": {
       "Name": "First Aid Kit",
       "Type": "Tool",
-      "Description": "This is a First Aid Kit. You can use it to to heal yourself and fix some status effects"
+      "Description": "This is a First Aid Kit. You can use it to to heal yourself and fix some status effects",
+      "Weight" : "2",
+      "Effect" : "healStatus",
+      "Amount" : "",
+      "isReusable" : true,
+      "useDialogue" : ""
     },
     "2": {
       "Name": "Axe",
       "Type": "Tool",
-      "Description" : "This is an axe. You can use it to cut wood, or perhaps for something else..."
+      "Description" : "This is an axe. You can use it to cut wood, or perhaps for something else...",
+      "Weight" : "2",
+      "Effect" : "",
+      "Amount" : "",
+      "isReusable" : true,
+      "useDialogue" : ""
     },
     "3": {
       "Name": "Flashlight",
       "Type": "Tool",
-      "Description" : "This is a flashlight. You can use it to light the way, or perhaps for something else..."
+      "Description" : "This is a flashlight. You can use it to light the way.",
+      "Weight" : "1",
+      "Effect" : "",
+      "Amount" : "",
+      "isReusable" : true,
+      "useDialogue" : ""
     },
     "4": {
       "Name": "Rifle",
       "Type": "Tool",
-      "Description" : "This is a rifle. Pow Pow."
+      "Description" : "This is a rifle. Pew Pew.",
+      "Weight" : "2",
+      "Effect" : "",
+      "Amount" : "",
+      "isReusable" : true,
+      "useDialogue" : ""
     },
     "5": {
       "Name": "Camo Clothes",
       "Type": "Clothes",
-      "Description" : "These are Camo Clothes. They may be useful for hiding in the wilderness"
+      "Description" : "These are Camo Clothes. They may be useful for hiding in the wilderness",
+      "Weight" : "1",
+      "Effect" : "",
+      "Amount" : "",
+      "isReusable" : false,
+      "useDialogue" : "You put on the camo clothes."
     },
     "6": {
       "Name": "Knife",
       "Type": "Tool",
-      "Description" : "This is a knife. Larger than your pocketknife, it might be useful to cut larger things or defend yourself."
+      "Description" : "This is a knife. Larger than your pocketknife, it might be useful to cut larger things or defend yourself.",
+      "Weight" : "2",
+      "Effect" : "",
+      "Amount" : "",
+      "isReusable" : true,
+      "useDialogue" : ""
     },
     "7": {
       "Name": "Matches",
       "Type": "Tool",
-      "Description" : "These are matches. You can use these to light a fire."
+      "Description" : "These are matches. You can use these to light a fire.",
+      "Weight" : ".5",
+      "Effect" : "",
+      "Amount" : "",
+      "isReusable" : true,
+      "useDialogue" : ""
     },
     "8": {
       "Name": "Water Bottle (Empty)",
       "Type": "Tool",
-      "Description" : "This is an empty water bottle. Maybe you should fill it up."
+      "Description" : "This is an empty water bottle. Maybe you should fill it up.",
+      "Weight" : "1",
+      "Effect" : "",
+      "Amount" : "",
+      "isReusable" : false,
+      "useDialogue" : "You smack yourself in the face with the empty bottle while trying to drink from it."
     },
     "9": {
       "Name": "Water Bottle (Dirty)",
-      "Type": "Tool",
-      "Description" : "This water bottle is filled with dirty water. You should clean it somehow before you drink it."
+      "Type": "Water",
+      "Description" : "This water bottle is filled with dirty water. You should clean it somehow before you drink it.",
+      "Weight" : "2",
+      "Effect" : "",
+      "Amount" : "max",
+      "isReusable" : false,
+      "useDialogue" : "You drink the dirty water."
     },
     "10": {
       "Name": "Water Bottle (Clean)",
-      "Type": "Tool",
-      "Description" : "This water bottle is filled with clean water. You could drink this and be fine."
+      "Type": "Water",
+      "Description" : "This water bottle is filled with clean water.",
+      "Weight" : "2",
+      "Effect" : "",
+      "Amount" : "max",
+      "isReusable" : false,
+      "useDialogue" : "You drink the clean water."
     },
     "11": {
       "Name": "Rope",
       "Type": "Tool",
-      "Description" : "This is rope. It might be useful when trying to survive"
+      "Description" : "This is rope. It might be useful when trying to survive",
+      "Weight" : "1",
+      "Effect" : "",
+      "Amount" : "",
+      "isReusable" : true,
+      "useDialogue" : ""
     },
     "12": {
       "Name": "Marshmallow",
       "Type": "Food",
-      "Description" : "This is a marshmallow. These taste delicious, but would be even better cooked."
+      "Description" : "This is a marshmallow. These taste delicious, but would be even better cooked.",
+      "Weight" : ".5",
+      "Effect" : "addHealth",
+      "Amount" : "2",
+      "isReusable" : false,
+      "useDialogue" : "You ate the marshmallow."
     },
     "13": {
       "Name": "Marshmallow (Cooked)",
       "Type": "Food",
-      "Description" : "This is a cooked marshmallow. Delicious!"
+      "Description" : "This is a cooked marshmallow. Delicious!",
+      "Weight" : ".5",
+      "Effect" : "addHealth",
+      "Amount" : "3",
+      "isReusable" : false,
+      "useDialogue" : "You ate the cooked Marshmallow"
     },
     "14": {
       "Name": "Tarp",
       "Type": "Tool",
-      "Description" : "This is a tarp. It could be useful for staying safe from the elements"
+      "Description" : "This is a tarp. It could be useful for staying safe from the elements",
+      "Weight" : "2",
+      "Effect" : "",
+      "Amount" : "",
+      "isReusable" : false,
+      "useDialogue" : ""
     },
     "15": {
       "Name": "American BitterSweet",
       "Type": "Food",
-      "Description" : "This is a berry. They are orange."
+      "Description" : "This is a berry. They are orange.",
+      "Weight" : ".5",
+      "Effect" : "",
+      "Amount" : "2",
+      "isReusable" : false,
+      "useDialogue" : "You ate the American Bittersweet berry."
     },
     "16": {
       "Name": "Blueberries",
       "Type": "Food",
-      "Description" : "These berries are small circular and of course, blue."
+      "Description" : "These berries are small circular and of course, blue.",
+      "Weight" : ".5",
+      "Effect" : "addHealth",
+      "Amount" : "2",
+      "isReusable" : false,
+      "useDialogue" : "You ate the blueberry."
     },
     "17": {
       "Name": "Blackberries",
       "Type": "Food",
-      "Description" : "These berries are small and black. They look safe to eat."
+      "Description" : "These berries are small and black. They look safe to eat.",
+      "Weight" : ".5",
+      "Effect" : "addHealth",
+      "Amount" : "2",
+      "isReusable" : false,
+      "useDialogue" : "You ate the blackberry."
     },
     "18": {
       "Name": "Strawberries",
       "Type": "Food",
-      "Description" : "These are strawberries. You know what a strawberry is don't you?"
+      "Description" : "These are strawberries. You know what a strawberry is don't you?",
+      "Weight" : ".5",
+      "Effect" : "addHealth",
+      "Amount" : "2",
+      "isReusable" : false,
+      "useDialogue" : "You ate the strawberry."
     },
     "19": {
       "Name": "Cottoneaster",
       "Type": "Food",
-      "Description" : "These berries are small and red."
+      "Description" : "These berries are small and red.",
+      "Weight" : ".5",
+      "Effect" : "",
+      "Amount" : "2",
+      "isReusable" : false,
+      "useDialogue" : "You ate the Cottoneaster berry."
     },
     "20": {
       "Name": "Yew",
       "Type": "Food",
-      "Description" : "These berries are small and red. Also, badgers can eat them."
+      "Description" : "These berries are small and red. Also, badgers can eat them.",
+      "Weight" : ".5",
+      "Effect" : "",
+      "Amount" : "2",
+      "isReusable" : false,
+      "useDialogue" : "You ate the Yew berry."
     },
     "21": {
       "Name": "Cooking Pot (Empty)",
       "Type": "Tool",
-      "Description" : "This is an empty cooking pot. This could be useful."
+      "Description" : "This is an empty cooking pot. This could be useful.",
+      "Weight" : "2",
+      "Effect" : "",
+      "Amount" : "",
+      "isReusable" : false,
+      "useDialogue" : ""
     },
     "22": {
       "Name": "Cooking Pot (Dirty)",
-      "Type": "Tool",
-      "Description" : "This cooking pot is filled with dirty water. You probably shouldn't consume this just yet."
+      "Type": "Water",
+      "Description" : "This cooking pot is filled with dirty water. You probably shouldn't consume this just yet.",
+      "Weight" : "3",
+      "Effect" : "",
+      "Amount" : "max",
+      "isReusable" : false,
+      "useDialogue" : "You drink the dirty water."
     },
     "23": {
       "Name": "Cooking Pot (Clean)",
-      "Type": "Tool",
-      "Description" : "This cooking pot is filled with clean water. This is safe to drink."
+      "Type": "Water",
+      "Description" : "This cooking pot is filled with clean water. This is safe to drink.",
+      "Weight" : "3",
+      "Effect" : "",
+      "Amount" : "max",
+      "isReusable" : false,
+      "useDialogue" : "You drink the clean water."
     },
     "24": {
       "Name": "Bucket (Empty)",
       "Type": "Tool",
-      "Description" : "This bucket is empty. It could be useful for carrying something..."
+      "Description" : "This bucket is empty. It could be useful for carrying something...",
+      "Weight" : "2",
+      "Effect" : "",
+      "Amount" : "",
+      "isReusable" : true,
+      "useDialogue" : "You turn the bucket over and nothing pours out. It's empty. Obviously."
     },
     "25": {
       "Name": "Bucket (Dirty)",
-      "Type": "Tool",
-      "Description" : "This bucket is filled with dirty water. You should avoid drinking it for now."
+      "Type": "Water",
+      "Description" : "This bucket is filled with dirty water. You should avoid drinking it for now.",
+      "Weight" : "3",
+      "Effect" : "",
+      "Amount" : "max",
+      "isReusable" : false,
+      "useDialogue" : "You drink the dirty water."
     },
     "26": {
       "Name": "Bucket (Clean)",
-      "Type": "Tool",
-      "Description" : "This bucket is filled with clean water. This is now safe to drink!"
+      "Type": "Water",
+      "Description" : "This bucket is filled with clean water. This is now safe to drink!",
+      "Weight" : "3",
+      "Effect" : "",
+      "Amount" : "max",
+      "isReusable" : false,
+      "useDialogue" : "You drink the clean water."
     },
     "27": {
       "Name" : "Burnt Lasagna",
       "Type": "Disappointment",
-      "Description" : "This is a constant reminder of how you burnt down your house. You can never drop this item."
+      "Description" : "This is a constant reminder of how you burnt down your house. You can never drop this item.",
+      "Weight" : "0",
+      "Effect" : "",
+      "Amount" : "",
+      "isReusable" : true,
+      "useDialogue" : "You stare at your burnt lasagna and remember what once was."
+    },
+    "28": {
+      "Name" : "Small Stick",
+      "Type": "Tool",
+      "Description" : "This is a small stick, maybe you can use it for something?",
+      "Weight" : "1",
+      "Effect" : "",
+      "Amount" : "",
+      "isReusable" : false,
+      "useDialogue" : ""
+    },
+    "29": {
+      "Name" : "Large Stick",
+      "Type": "Tool",
+      "Description" : "This is a larger stick, maybe you can use it for something?.",
+      "Weight" : "2",
+      "Effect" : "",
+      "Amount" : "",
+      "isReusable" : false,
+      "useDialogue" : ""
     }
   }
 }
