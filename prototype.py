@@ -36,11 +36,11 @@ class Player:                   #player class, handles everything relating to th
 
     def removeStatus(self):
         if self.burn == False and "Burn" in self.currStatus:
-            self.currStatus.append("Burn")
+            self.currStatus.remove("Burn")
         if self.poison == False and "Poison" in self.currStatus:
-            self.currStatus.append("Poison")
+            self.currStatus.remove("Poison")
         if self.cut == False and "Cut" in self.currStatus:
-            self.currStatus.append("Cut")
+            self.currStatus.remove("Cut")
 
 
 
@@ -129,6 +129,33 @@ class Player:                   #player class, handles everything relating to th
                 self.cut = True
                 self.updateStatus()
                 inventory = self.removeItem(inventory, item, itemList)
+            elif item == "8":
+                inventory.pop(item)
+                inventory[item] = itemList["Items"]["10"]["Name"]
+            elif item == "21":
+                inventory.pop(item)
+                inventory[item] = itemList["Items"]["23"]["Name"]
+            elif item == "24":
+                inventory.pop(item)
+                inventory[item] = itemList["Items"]["26"]["Name"]
+            elif item == "10":
+                self.health += float(itemList["Items"][item]["Amount"])
+                if (self.health > self.maxHealth):
+                    self.health = self.maxHealth
+                inventory.pop(item)
+                inventory[item] = itemList["Items"]["8"]["Name"]
+            elif item == "23":
+                self.health += float(itemList["Items"][item]["Amount"])
+                if (self.health > self.maxHealth):
+                    self.health = self.maxHealth
+                inventory.pop(item)
+                inventory[item] = itemList["Items"]["21"]["Name"]
+            elif item == "26":
+                self.health += float(itemList["Items"][item]["Amount"])
+                if (self.health > self.maxHealth):
+                    self.health = self.maxHealth
+                inventory.pop(item)
+                inventory[item] = itemList["Items"]["24"]["Name"]
             else:
                 print("This item isn't implemented fully yet.")
         return inventory
@@ -179,7 +206,7 @@ class Window(Frame):
 
         '''set variable self.frame to create a frame whose parent is self.window and set the background color to black
         Then create a grid for it'''
-        self.frame = Frame(self.window, bg="black")
+        self.frame = Frame(self.window, bg="black", width=900, height=900)
         self.frame.grid(row=0, column=0, padx=10, pady=10)
 
         '''
@@ -190,10 +217,13 @@ class Window(Frame):
 
         self.img = (Image.open("StartPhoto.png"))
         self.chOnePhoto = (Image.open("Chapter1Photo.jpg"))
+        self.chZeroPhoto = (Image.open("Chapter0Photo.jpg"))
         self.img = self.img.resize((400,400))
         self.chOnePhoto = self.chOnePhoto.resize((400,400))
+        self.chZeroPhoto = self.chZeroPhoto.resize((400,400))
         self.img = ImageTk.PhotoImage(self.img)
         self.chOnePhoto = ImageTk.PhotoImage(self.chOnePhoto)
+        self.chZeroPhoto = ImageTk.PhotoImage(self.chZeroPhoto)
         self.label = Label(self.frame, image=self.img, text="Typical Monday", compound=CENTER, fg="orange",
                            width=1200, wraplength=1000, justify=CENTER, bg="black")
         self.label.config(font=("Times 40 bold"))
@@ -218,14 +248,14 @@ class Window(Frame):
         2 rows'''
         self.START.grid(row=2, column=0, rowspan=2, pady=100, ipadx=50)
 
+        self.chapterSelect = Button(self.frame, text="Select Chapter", height=2, width=3, font=30, command=self.selectChapter,
+                          justify=CENTER, fg="black", bg="orange")
+        self.chapterSelect.grid(row=2, column=1, rowspan=2, pady=100, ipadx=50)
+
         '''Create self.DIE button g'''
         self.DIE = Button(self.frame, text="Quit", height=2, width=3, font=30, command=self.clickDieButton,
                           justify=CENTER, fg="black", bg="orange")
-        self.DIE.grid(row=2, column=1, rowspan=2, pady=100, ipadx=50)
-
-        self.chapterSelect = Button(self.frame, text="Select Chapter", height=2, width=3, font=30, command=self.selectChapter,
-                          justify=CENTER, fg="black", bg="orange")
-        self.chapterSelect.grid(row=2, column=2, rowspan=2, pady=100, ipadx=50)
+        self.DIE.grid(row=2, column=2, rowspan=2, pady=100, ipadx=50)
         self.player = Player()
 
     def selectChapter(self):
@@ -233,9 +263,9 @@ class Window(Frame):
         self.frame = Frame(self.window, bg="black")
         self.frame.grid(row=0, column=0, padx=10, pady=10)
         self.label = Label(self.frame, text="Chapter Select:", justify=CENTER,
-                            font=("Roman", 20), fg="orange", bg="black", width=95, wraplength=900)
+                            font=("Roman", 30), fg="orange", bg="black", width=65, wraplength=900)
         self.label.grid(row=0, column=0, columnspan=2, pady=50)
-        self.chapterZero = Button(self.frame, image=self.img, text="Chapter 0", height=12, width=15, compound=CENTER, font=30,
+        self.chapterZero = Button(self.frame, image=self.chZeroPhoto, text="Chapter 0", height=12, width=15, compound=CENTER, font=30,
                                  command=self.clickStartButton, justify=CENTER, fg="black", bg="orange")
         self.chapterZero.config(font="Roman 20 bold")
         self.chapterZero.grid(row=2, column=0, rowspan=2, pady=100, ipadx=100, ipady=100)
@@ -244,6 +274,34 @@ class Window(Frame):
         self.chapterOne.config(font=("Roman 20 bold"))
         self.chapterOne.grid(row=2, column=1, rowspan=2, pady=100, ipadx=100, ipady=100)
 
+        '''self.frame.destroy()
+        self.window['bg']='black'
+        self.frame = Frame(self.window, bg="black")
+        self.frame.grid(row=0, column=0, padx=10, pady=10)
+        #self.frame.columnconfigure(0, weight=1)
+
+
+        #self.frame.grid_columnconfigure(0, weight=1)
+        #self.frame.grid_rowconfigure(0, weight=1)
+        #self.frame.grid(row=0, column=0, padx=10, pady=10, sticky='nsew')
+
+        #self.frame.config()
+        #self.frame.place(self.window, CENTER)
+        #self.frame.grid_columnconfigure(0, weight=1)
+
+
+        self.label = Label(self.frame, text="Chapter Select:", justify=CENTER, width=1000,
+                            fg="orange", bg="black", wraplength=800)
+        self.label.config(font="times 40 bold")
+        self.label.grid(row=0, column=0, columnspan=3, pady=50)
+        self.chapterZero = Button(self.frame, image=self.img, text="Chapter 0", height=12, width=15, compound=CENTER,
+                                 command=self.clickStartButton, justify=CENTER, fg="black", bg="orange")
+        self.chapterZero.config(font="Roman 20 bold")
+        self.chapterZero.grid(row=2, column=0, rowspan=2, ipadx=100, ipady=100)
+        self.chapterOne = Button(self.frame, image=self.chOnePhoto, text="Chapter 1", height=12, width=15,
+                                 command=self.chapterOneSelect, justify=CENTER, compound=CENTER, fg="black", bg="orange")
+        self.chapterOne.config(font=("Roman 20 bold"))
+        self.chapterOne.grid(row=2, column=1, rowspan=2, ipadx=100, ipady=100)'''
     def chapterOneSelect(self):
         self.chapterNum = 1
         self.clickStartButton()
@@ -276,6 +334,7 @@ class Window(Frame):
 
 
     def start(self):
+        self.currentScenario = "Scenario1"
         self.did_inspect = 0
         self.window["bg"] = "black"
         self.frame = Frame(self.window, bg="black")
@@ -325,7 +384,7 @@ class Window(Frame):
     def displayHealth(self):
         self.health = "Current Health: " + str(self.player.health)
         self.healthBar = Label(self.frame, text=self.health, justify=LEFT, font=("Roman", 15, "bold"), fg="red", bg="black")
-        self.healthBar.grid(row=0, column=0,ipadx=40, padx=40)
+        self.healthBar.grid(row=0, column=0,ipadx=40, pady=50)
         self.status = "Status Effects: "
         if self.player.currStatus == []:
             self.status += "None"
@@ -334,7 +393,7 @@ class Window(Frame):
                 self.status = self.status + str(i)
         self.statusBar = Label(self.frame, text=self.status, justify=LEFT, font=("Roman", 15, "bold"), fg="red", bg="black")
         #self.statusBar.config(text=self.status)
-        self.statusBar.grid(row=0, column=self.numButtons-1)
+        self.statusBar.grid(row=0, column=self.numButtons-1, pady=50)
 
     def updateHealth(self):
         self.health = "Current Health: " + str(self.player.health)
@@ -364,6 +423,7 @@ class Window(Frame):
         #if self.file[str(self.chapterNum)][currentScenario]["Dec2"] != "":'''
 
     def options(self, currentScenario):
+        self.currentScenario=currentScenario
         self.player.update(self.file[str(self.chapterNum)][currentScenario]["hasStatus"])
         if self.file[str(self.chapterNum)][currentScenario]["takeDamage"] != "0":
             self.player.health -= int(self.file[str(self.chapterNum)][currentScenario]["takeDamage"])
@@ -472,7 +532,7 @@ class Window(Frame):
             self.option1 = Button(self.frame, text=self.file[str(self.chapterNum)][currentScenario]["inspect"]["Dec1"],
                                   fg="black", bg="orange",command=lambda: self.itemDescription(currentScenario,
                                   self.file[str(self.chapterNum)][currentScenario]["inspect"]["pointer1"]), height=3, width=5,
-                                  font=15,
+                                  font=15, wraplength=150,
                                   justify=CENTER)
             self.option1.grid(row=2, column=0, sticky="s", rowspan=2, pady=100, ipadx=50)
 
@@ -537,22 +597,31 @@ class Window(Frame):
         self.item.destroy()
         self.inventory_items[pointer] = self.items["Items"][pointer]["Name"]
         self.file[str(self.chapterNum)][currentScenario]["inspect"][pointer] = ""
+        print(currentScenario)
         self.displayInventory(currentScenario, pointer)
 
     def displayInventory(self, currentScenario, pointer):
         self.inventory.add_command(label=self.items["Items"][pointer]["Name"], command=lambda: self.useItem(currentScenario, pointer))
         if self.player.health <= 0:
             self.dead()
+        print(currentScenario)
         self.inspect(currentScenario)
         #for i in self.inventory_items:
 
     def useItem(self,currentScenario, pointer):
+        print(currentScenario)
         self.useButton = Button(self.inventory, text="use item")
         self.player.useItem(self.inventory_items, pointer, self.items)
         self.useItemDialog(currentScenario, pointer)
 
     def useItemDialog(self, currentScenario, pointer):
-        if self.did_inspect:
+        print(currentScenario)
+        self.frame.destroy()
+        self.frame = Frame(self.window, bg="black")
+        self.frame.grid(row=0, column=0)
+        self.numButtons=2
+        self.displayHealth()
+        '''if self.did_inspect:
             self.go_back.destroy()
             self.did_inspect = False
         if self.numButtons >= 2:
@@ -562,20 +631,23 @@ class Window(Frame):
                 self.option2.destroy()
                 if self.numButtons == 4:
                     self.option3.destroy()
-        self.dialog.destroy()
-        self.numButtons = 2
-        if pointer in self.file[str(self.chapterNum)][currentScenario]["usableItems"]:
-            self.dialog = Label(self.frame, text=self.items["Items"][pointer]["useDialog"],
+        self.dialog.destroy()'''
+        print(pointer)
+        print(currentScenario)
+        print(pointer in self.file[str(self.chapterNum)][self.currentScenario]["usableItems"])
+        if "1" in self.file[str(self.chapterNum)][self.currentScenario]["usableItems"]:
+            self.dialog = Label(self.frame, text=self.items["Items"][pointer]["useDialogue"],
                                 justify=CENTER, font=("Roman", 20), fg="orange", bg="black", width=85, wraplength=500)
-            self.dialog.grid(row=1, column=0)
+            self.dialog.grid(row=1, column=0, columnspan=2, pady=100)
         else:
             self.dialog = Label(self.frame, text="You can't use this item here",
                                 justify=CENTER, font=("Roman", 20), fg="orange", bg="black", width=85, wraplength=500)
-            self.dialog.grid(row=1, column=0)
-        self.continueScenario = Button(self.frame, text="Continue", command=lambda: self.addItem(currentScenario, pointer),
-                              height=3, width=5, fg="black", bg="orange", font=15)
-        self.continueScenario.grid(row=2, column=0)
-        self.updateHealth()
+            self.dialog.grid(row=1, column=0, columnspan=2, pady=100)
+        self.option1 = Button(self.frame, text="Continue", command=lambda: self.options(self.currentScenario),
+                              height=3, width=5, fg="black", bg="orange", font=15, justify=CENTER)
+        self.option1.grid(row=2, column=0, rowspan=2, columnspan=2, ipadx=50, pady=100)
+        self.numButtons=2
+        self.option2 = Label(self.frame)
 
 
 window = Window(json_chapter, json_items, window=root)
