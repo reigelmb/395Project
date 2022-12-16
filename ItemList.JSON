@@ -155,8 +155,8 @@
       "Type": "Food",
       "Description" : "This is a berry. They are orange.",
       "Weight" : ".5",
-      "Effect" : "",
-      "Amount" : "2",
+      "Effect" : "givePoison",
+      "Amount" : "",
       "isReusable" : false,
       "useDialogue" : "You ate the American Bittersweet berry."
     },
@@ -195,7 +195,7 @@
       "Type": "Food",
       "Description" : "These berries are small and red.",
       "Weight" : ".5",
-      "Effect" : "",
+      "Effect" : "removeHealth",
       "Amount" : "2",
       "isReusable" : false,
       "useDialogue" : "You ate the Cottoneaster berry."
@@ -205,8 +205,8 @@
       "Type": "Food",
       "Description" : "These berries are small and red. Also, badgers can eat them.",
       "Weight" : ".5",
-      "Effect" : "",
-      "Amount" : "2",
+      "Effect" : "givePoison",
+      "Amount" : "",
       "isReusable" : false,
       "useDialogue" : "You ate the Yew berry."
     },
@@ -296,6 +296,16 @@
       "Description" : "This is a larger stick, maybe you can use it for something?.",
       "Weight" : "2",
       "Effect" : "",
+      "Amount" : "",
+      "isReusable" : false,
+      "useDialogue" : ""
+    },
+    "30": {
+      "Name" : "Aloe Vera",
+      "Type": "Plant",
+      "Description" : "This is a green leafy plant. It can be used to soothe burns",
+      "Weight" : "2",
+      "Effect" : "healBurn",
       "Amount" : "",
       "isReusable" : false,
       "useDialogue" : ""
