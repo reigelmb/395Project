@@ -18,7 +18,7 @@
       "Effect" : "healStatus",
       "Amount" : "",
       "isReusable" : true,
-      "useDialogue" : ""
+      "useDialogue" : "You use the first aid kit to help heal your wounds and effects"
     },
     "2": {
       "Name": "Axe",
@@ -101,12 +101,12 @@
       "useDialogue" : "You drink the dirty water."
     },
     "10": {
-      "Name": "Water Bottle (Clean)",
+      "Name": "Water Bottle (Full)",
       "Type": "Water",
       "Description" : "This water bottle is filled with clean water.",
       "Weight" : "2",
-      "Effect" : "",
-      "Amount" : "max",
+      "Effect" : "addHealth",
+      "Amount" : "2",
       "isReusable" : false,
       "useDialogue" : "You drink the clean water."
     },
@@ -231,12 +231,12 @@
       "useDialogue" : "You drink the dirty water."
     },
     "23": {
-      "Name": "Cooking Pot (Clean)",
+      "Name": "Cooking Pot (Full)",
       "Type": "Water",
       "Description" : "This cooking pot is filled with clean water. This is safe to drink.",
       "Weight" : "3",
-      "Effect" : "",
-      "Amount" : "max",
+      "Effect" : "addHealth",
+      "Amount" : "2",
       "isReusable" : false,
       "useDialogue" : "You drink the clean water."
     },
@@ -261,12 +261,12 @@
       "useDialogue" : "You drink the dirty water."
     },
     "26": {
-      "Name": "Bucket (Clean)",
+      "Name": "Bucket (Full)",
       "Type": "Water",
       "Description" : "This bucket is filled with clean water. This is now safe to drink!",
       "Weight" : "3",
-      "Effect" : "",
-      "Amount" : "max",
+      "Effect" : "addHealth",
+      "Amount" : "2",
       "isReusable" : false,
       "useDialogue" : "You drink the clean water."
     },
