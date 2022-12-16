@@ -578,7 +578,7 @@
 			}
 		},
 		"Scenario13": {
-			"Dialogue": "You have something to hold water with, use the inventory option to fill it up so. You'll need to find a way to boil the water.",
+			"Dialogue": "If you have something to hold water with, click on that item in your inventory to fill it up with drinkable water.",
 			"Dec1": "Go back to charred cabin",
 			"Dec2": "Go back to river options",
 			"Dec3": "",
