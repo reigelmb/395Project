@@ -900,9 +900,9 @@
 			}
 		},
 		"Scenario27": {
-			"Dialogue": "You have a shelter now built in the clearing. It is a small collection of logs, sticks, and leaves, but it serves your basic needs. What do you do next?",
-			"Dec1": "Rest at shelter",
-			"Dec2": "Build fire",
+			"Dialogue": "You have a shelter now built in the clearing. It is a small collection of logs, sticks, and leaves, but it serves your basic needs. Time for a rest!",
+			"Dec1": "Continue",
+			"Dec2": "",
 			"Dec3": "Go back",
 			"pointer1": "",
 			"pointer2": "",
